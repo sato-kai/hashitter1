@@ -1,0 +1,86 @@
+.wrapper-contents
+  .contents
+    .main-content
+      %h3.main-content__title
+        tweet一覧
+      .content
+        -# - @tweets.each do |tweet|
+        .content__box
+          .avatar
+          .content__box__post
+            .upper-post
+              .user-name
+                hoge@fuga
+              .post-date
+                00-00-00
+            .lower-post
+              .tweet
+                こんにちはああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+              .image
+              .check-lists
+                .button-list
+                  .nav-text
+                    編集する
+                    .nav-balloon
+                  = link_to "" do
+                    = icon "fas", "edit"
+                .button-list
+                  .nav-text
+                    削除する
+                    .nav-balloon
+                  = link_to "" do
+                    = icon "fas", "trash"
+                .button-list
+                  .nav-text
+                    いいね！
+                    .nav-balloon
+                  = link_to "" do
+                    = icon "fas", "heart"
+                -# %ul.sample
+                -#   %li
+                -#     目玉焼き定食
+                -#     %span.tooltips 目玉焼き焼き続けて２０年!!半熟具合が絶妙!!
+                -#   %li
+                -#     焼肉定食
+                -#     %span.tooltips 嫌いな人はいない人気商品!!コスパ最高！！
+                -#   %li
+                -#     コロッケ定食
+                -#     %span.tooltips 実は内緒で２０個に１つクリームコロッケ入れてる
+                -#   %li
+                -#     焼き魚定食
+                -#     %span.tooltips 亭主の昨日の釣果によって豪華度が変わります
+
+        .content__box
+          .avatar
+          .content__box__post
+        .content__box
+          .avatar
+          .content__box__post
+            .upper-post
+              .user-name
+                hoge@fuga
+              .post-date
+                00-00-00
+            .lower-post
+              .tweet
+                こんにちはああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+              .image
+        .content__box
+          .avatar
+          .content__box__post
+        .content__box
+          .avatar
+          .content__box__post
+            .upper-post
+              .user-name
+                hoge@fuga
+              .post-date
+                00-00-00
+            .lower-post
+              .tweet
+                こんにちはああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+              .image
+        .content__box
+          .avatar
+          .content__box__post
+    = render partial: "/side_bar"
