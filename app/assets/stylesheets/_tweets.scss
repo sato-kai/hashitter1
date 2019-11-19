@@ -1,0 +1,68 @@
+.content{
+  &__box{
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    display: flex;
+    &__post{
+      width: calc(100% - 60px);
+      padding: 0 20px;
+      .upper-post{
+        display: flex;
+        justify-content: space-between;
+      }
+      .lower-post{
+        .tweet{
+          width: 100%;
+          margin-top: 10px;
+          max-height: 70px;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 3;
+        }
+        .image{
+          margin: 10px auto 0;
+          width: 300px;
+          height: 250px;
+        }
+        .check-lists{
+          margin-top: 10px;
+          display: flex;
+          justify-content: flex-end;
+          .button-list{
+            margin-left: 20px;
+            position: relative;
+            .tooltipt{
+              width: 70px;
+              position: absolute;
+              top: -35px;
+              left: -25px;
+              display: block;
+              text-align: center;
+              background-color: #F1EAD7;
+              border-radius: 10px;
+              z-index: 1;
+              display: none;
+              .tooltip-balloon{
+                display: block;
+                height: 5px;
+                width: 5px;
+                position: absolute;
+                top: 35px;
+                left: 17px;
+                margin-top: -15px;
+                border: 15px solid transparent;
+                border-top: 15px solid #F1EAD7;
+              }
+            }
+          }
+        }
+        .weekly_average_mileage{
+          float: right;
+        }
+      }
+    }
+  }
+}

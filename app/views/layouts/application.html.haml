@@ -1,0 +1,28 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Hashitter1
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %header.header
+      .header__left
+        = link_to "Hashitter", root_path, class: "home-link"
+      .header__right
+        %ul.header__right__menu
+          %li.list
+            = link_to "WORK"
+          %li.list
+            = link_to "TWEET"
+          %li.list
+            = link_to "ログアウト"
+          %li.list
+            = link_to "ログイン"
+          %li.list
+            = link_to "新規登録"
+        .header-icon
+          = link_to ""
+    = yield
