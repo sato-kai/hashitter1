@@ -1,7 +1,104 @@
-.avatar{
+.mini_avatar{
+  height: 30px;
+  width: 30px;
+}
+.small-avatar{
   width: 60px;
   height: 60px;
   border: solid 2px #F1EAD7;
   border-radius: 50%;
   background-color: #ffffff;
+}
+.large-avatar{
+  width: 300px;
+  margin: 20px auto;
+  background-color: #ffffff;
+}
+@mixin parts{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.avatar{
+  position: relative;
+  #face{
+    @include parts
+  }
+  .skin{
+    @include parts
+  }
+  #hair{
+    @include parts
+  }
+  #inner{
+    @include parts
+  }
+  .upper-body{
+    @include parts
+  }
+  #lower-body{
+    @include parts
+  }
+  #shoes{
+    @include parts
+  }
+}
+
+.avatar_parts{
+  display: flex;
+  justify-content: space-between;
+  .hidden_button{
+    display: none;
+  }
+  .tops_preview{
+    margin-top: -30px;
+    height: 60px;
+    width: 60px;
+  }
+  .bottoms_preview{
+
+  }
+  .parts_preview{
+    height: 30px;
+    width: 30px;
+    margin-bottom: 10px;
+    #parker{
+      // margin-top: -35px;
+      height: 100%;
+      width: 100%;
+      position: relative;
+      #line{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+  .tops_preview{
+    margin-top: -30px;
+    height: 60px;
+    width: 60px;
+  }
+  .bottoms_preview{
+    margin: -60px 0 20px 0;
+    height: 60px;
+    width: 60px;
+  }
+}
+
+#jogging_suits{
+  height: 100%;
+  width: 100%;
+  position: relative;
+  #line{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
 }
