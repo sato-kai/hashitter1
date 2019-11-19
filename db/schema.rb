@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_19_101444) do
+ActiveRecord::Schema.define(version: 2019_11_19_102854) do
+
+  create_table "avatars", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "face", default: "fat"
+    t.string "hair", default: "mens_hair1"
+    t.string "hair_color", default: "black"
+    t.string "tops", default: "fat"
+    t.string "tops_color", default: "skyblue"
+    t.string "tops_line"
+    t.string "tops_line_color"
+    t.string "inner"
+    t.string "inner_color", default: "yellow"
+    t.string "bottoms", default: "fat"
+    t.string "bottoms_color", default: "gray"
+    t.string "bottoms_line"
+    t.string "bottoms_line_color"
+    t.string "spats"
+    t.string "spats_color", default: "black"
+    t.string "shoes", default: "shoes1"
+    t.string "shoes_color", default: "blue"
+    t.float "weekly_average_mileage", default: 0.0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_avatars_on_user_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -29,4 +54,5 @@ ActiveRecord::Schema.define(version: 2019_11_19_101444) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "avatars", "users"
 end
