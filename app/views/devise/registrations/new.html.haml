@@ -1,0 +1,53 @@
+.wrapper-contents
+  .contents
+    .form
+      .form__title
+        新規登録
+      = form_with model: @user, url: user_registration_path, local: true do |f|
+        = render "devise/shared/error_messages", resource: resource
+        .field-wrapper
+          .user-field
+            .field
+              = f.label :名前
+              %br/
+              = f.text_field :name, autofocus: true, autocomplete: "name", class: "input-field"
+            .field
+              = f.label :email
+              %br/
+              = f.email_field :email, autofocus: true, autocomplete: "email", class: "input-field"
+            .field
+              = f.label :password
+              - if @minimum_password_length
+                %em
+                  (#{@minimum_password_length} 文字以上)
+              = f.password_field :password, autocomplete: "new-password", class: "input-field"
+            .field
+              = f.label :password_確認
+              %br/
+              = f.password_field :password_confirmation, autocomplete: "new-password", class: "input-field"
+            .field
+              = f.label :住所
+              %br/
+              = f.select :prefecture, User.prefectures.keys, {prompt: '選択してください'}, class: "input-field"
+            .field
+              = f.label :年齢
+              %br/
+              = f.select :age, User.ages.keys, {prompt: '選択してください'}, class: "input-field"
+            .field
+              = f.label :性別
+              %br/
+              = f.label :gender , value: "男性" do
+                = f.radio_button :gender, :男性
+                男性
+              = f.label :gender , value: "女性"  do
+                = f.radio_button :gender, :女性
+                女性
+            .field
+              = f.label :プロフィール
+              %br/
+              = f.text_area :profile
+          .large-avatar
+          .avatar-field
+            こんにちは
+        .actions
+          = f.submit "新規登録", class: "submit-button"
