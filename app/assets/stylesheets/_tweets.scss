@@ -34,7 +34,7 @@
           .button-list{
             margin-left: 20px;
             position: relative;
-            .nav-text{
+            .tooltipt{
               width: 70px;
               position: absolute;
               top: -35px;
@@ -45,7 +45,7 @@
               border-radius: 10px;
               z-index: 1;
               display: none;
-              .nav-balloon{
+              .tooltip-balloon{
                 display: block;
                 height: 5px;
                 width: 5px;

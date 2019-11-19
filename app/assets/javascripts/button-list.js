@@ -1,8 +1,8 @@
 $(document).on("turbolinks:load",function(){
-  $(".nav-text").hide();
+  $(".tooltipt").hide();
   $(".button-list").hover(function(){
-    $(this).children(".nav-text").fadeIn("fast");
+    $(this).children(".tooltipt").fadeIn("fast");
   }, function(){
-    $(this).children(".nav-text").fadeOut("fast");
+    $(this).children(".tooltipt").fadeOut("fast");
   });
 });
