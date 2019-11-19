@@ -1,0 +1,17 @@
+#face
+  = render partial: "/avatar/face/#{user.avatar.face}_face"
+.skin
+  = render partial: "/avatar/default/hand"
+.hair
+  %div{id: "hair", class: "mens-hair #{user.avatar.hair_color}"}
+    = render partial: "/avatar/hair/#{user.avatar.hair}"
+#inner.yellow
+  = render partial: "/avatar/upper_body/inner1"
+.upper-body
+  %div{id: "upper-body", class: "#{user.avatar.tops_color}"}
+    = render partial: "/avatar/upper_body/#{user.avatar.tops}_upper_body"
+.lower-body
+  %div{id: "lower-body", class: "#{user.avatar.bottoms_color}"}
+    = render partial: "/avatar/lower_body/#{user.avatar.bottoms}_lower_body"
+%div{id: "shoes", class: "#{user.avatar.shoes_color}"}
+  = render partial: "/avatar/shoes/#{user.avatar.shoes}"

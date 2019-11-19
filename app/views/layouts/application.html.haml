@@ -13,16 +13,18 @@
         = link_to "Hashitter", root_path, class: "home-link"
       .header__right
         %ul.header__right__menu
-          %li.list
-            = link_to "WORK"
-          %li.list
-            = link_to "TWEET"
-          %li.list
-            = link_to "ログアウト", destroy_user_session_path, metod: :delete
-          %li.list
-            = link_to "ログイン"
-          %li.list
-            = link_to "新規登録", new_user_registration_path
+          - if user_signed_in?
+            %li.list
+              = link_to "WORK"
+            %li.list
+              = link_to "TWEET"
+            %li.list
+              = link_to "ログアウト", destroy_user_session_path, metod: :delete
+          - else
+            %li.list
+              = link_to "ログイン"
+            %li.list
+              = link_to "新規登録", new_user_registration_path
         .header-icon
           = link_to ""
     = yield

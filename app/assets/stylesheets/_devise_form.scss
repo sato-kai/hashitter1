@@ -4,6 +4,8 @@
     width: 100%;
     text-align: center;
     font-size: 24px;
+    padding: 10px 0;
+    font-weight: bold;
   }
 }
 .field-wrapper{
@@ -12,21 +14,36 @@
   .user-field{
     width: 33%;
     .field{
-      width: 200px;
+      width: 300px;
       margin: 0 auto 10px;
       .input-field{
         width: 100%;
         height: 40px;
         border-radius: 10px;
       }
+      .gender{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px;
+      }
     }
   }
-  .large-avatar{
+  .avatar-wrapper{
     width: 33%;
   }
   .avatar-field{
     width: 33%;
   }
+}
+
+.form-announce{
+  width: 300px;
+  text-align: center;
+  margin: 20px auto;
+  border: solid 2px #ad9570;
+  border-radius: 10px;
+  
 }
 
 

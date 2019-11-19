@@ -1,0 +1,132 @@
+.color-select{
+  width: 300px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  .radio-buttons{
+    padding: 20px;
+    .btn-wrapper{
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+    }
+  }
+}
+
+input[type=radio] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  vertical-align: -0.8rem;
+  transition:all .15s ease-out 0s;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+  border-radius: 10%;
+}
+
+
+// ラジオボタン
+input[type=radio] {
+  border-radius: 50%;
+}
+input[type=radio]:checked:before {
+  transform: scale(1);
+}
+input[type=radio]:before {
+  content: "";
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin: -1px;
+  transform: scale(0);
+  transition: all ease-out 250ms;
+}
+input[type=radio].man {
+  border: 5px solid blue;
+}
+.man:checked:before {
+  background: blue;
+}
+input[type=radio].woman {
+  border: 5px solid red;
+  margin-left: auto;
+}
+.woman:checked:before {
+  background: red;
+}
+input[type=radio].red {
+  border: 5px solid red;
+}
+.red:checked:before {
+  background: red;
+}
+input[type=radio].yellow {
+  border: 5px solid yellow;
+}
+.yellow:checked:before {
+  background: yellow;
+}
+input[type=radio].blue {
+  border: 5px solid blue;
+}
+.blue:checked:before {
+  background: blue;
+}
+input[type=radio].green {
+  border: 5px solid green;
+}
+.green:checked:before {
+  background: green;
+}
+input[type=radio].black {
+  border: 5px solid black;
+}
+.black:checked:before {
+  background: black;
+}
+input[type=radio].gray {
+  border: 5px solid gray;
+}
+.gray:checked:before {
+  background: gray;
+}
+input[type=radio].brown {
+  border: 5px solid #4f2702;
+}
+.brown:checked:before {
+  background: #4f2702;
+}
+input[type=radio].orange {
+  border: 5px solid orange;
+}
+.orange:checked:before {
+  background: orange;
+}
+input[type=radio].skyblue {
+  border: 5px solid skyblue;
+}
+.skyblue:checked:before {
+  background: skyblue;
+}
+input[type=radio].white {
+  border: 1px solid black;
+  position: relative;
+}
+.white:checked:before {
+  background: rgb(247, 246, 246);
+  border: 1px solid black;
+  padding: 2px;
+  width: 10px;
+  height: 10px;
+  margin: 1px;
+}
