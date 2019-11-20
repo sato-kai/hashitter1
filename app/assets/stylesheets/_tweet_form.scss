@@ -1,0 +1,64 @@
+.tweet-form{
+  display: flex;
+  justify-content: center;
+  .text-field{
+    width: 400px;
+    min-height: 80px;
+    margin: 0 auto;
+    border-radius: 10px;
+    border-color: #ad9570;
+    padding: 10px;
+  }
+}
+.lower-form{
+  width: 300px;
+  margin: 0 auto;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  .image-label{
+    position: relative;
+    .hidden-form{
+      display: none;
+    }
+    .image-icon{
+      font-size: 30px;
+      line-height: 40px;
+      cursor: pointer;
+      // position: relative;
+    }
+    .modal-tooltip{
+      position: absolute;
+      top: 4px;
+      left: 50px;
+      display: block;
+      height: 30px;
+      line-height: 30px;
+      width: 80px;
+      font-size: 14px;
+      text-align: center;
+      background-color: #F1EAD7;
+      border-radius: 10px;
+      z-index: 1;
+      display: none;
+      .modal-balloon{
+        display: block;
+        height: 5px;
+        width: 5px;
+        position: absolute;
+        top: 15px;
+        left: -20px;
+        margin-top: -15px;
+        border: 15px solid transparent;
+        border-right: 15px solid #F1EAD7;
+        z-index: 0;
+      }
+    }
+  }
+}
+.js-modal-close{
+  font-size: 20px;
+}
+.modal-submit{
+  margin: 0;
+}

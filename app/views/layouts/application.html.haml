@@ -12,19 +12,38 @@
       .header__left
         = link_to "Hashitter", root_path, class: "home-link"
       .header__right
-        %ul.header__right__menu
-          - if user_signed_in?
-            %li.list
-              = link_to "WORK"
-            %li.list
-              = link_to "TWEET"
-            %li.list
-              = link_to "ログアウト", destroy_user_session_path, metod: :delete
-          - else
-            %li.list
-              = link_to "ログイン"
-            %li.list
-              = link_to "新規登録", new_user_registration_path
-        .header-icon
-          = link_to ""
+        - if user_signed_in?
+          %ul.header__right__menu
+            = link_to "WORK", root_path, class: "list"
+            .list
+              .js-modal-open
+                TWEET
+            = link_to "ログアウト", destroy_user_session_path, class: "list", metod: :delete
+          .avatar-circle
+            .header-icon
+              .avatar
+                = link_to user_path(current_user), class: "list" do
+                  = render partial: "/users/avatar", locals: {user: current_user}
+        - else
+          .header__right__menu
+            = link_to "ログイン", new_user_session_path, class: "list"
+            = link_to "新規登録", new_user_registration_path, class: "list"
+    .modal.js-modal
+      .modal__bg.js-modal-close
+      .modal__content
+        = icon "fas", "times", class: "js-modal-close"
+        .form
+          = form_with(model: @tweet, local: true) do |f|
+            .tweet-form
+              = f.text_area :text, placeholder: "今何してる？", class: "text-field"
+            .lower-form
+              = f.label :image, class: "image-label" do
+                = f.file_field :image, class: "hidden-form"
+                = icon "far", "image", class: "image-icon"
+                .modal-tooltip
+                  画像投稿
+                  .modal-balloon
+              .actions.modal-submit
+                = f.submit "つぶやく", class: "submit-button"
+
     = yield
