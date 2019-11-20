@@ -1,1 +1,14 @@
-hello
+.main-content
+  %h3.main-content__title
+    %span
+    = icon "fas", "arrow-left"
+    = link_to "戻る", :back, class: "back-link"
+  .content
+    .content__box
+      .avatar-circle
+        .mini-avatar
+          .avatar
+            = render partial: "/users/avatar", locals: {user: @tweet.user}
+      = render partial: "tweet", locals: {tweet: @tweet}
+
+= render partial: "/side_bar"

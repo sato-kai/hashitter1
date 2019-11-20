@@ -8,6 +8,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    -# ヘッダー
     %header.header
       .header__left
         = link_to "Hashitter", root_path, class: "home-link"
@@ -16,7 +17,7 @@
           %ul.header__right__menu
             = link_to "WORK", root_path, class: "list"
             .list
-              .js-modal-open
+              .js-modal-tweet-open
                 TWEET
             = link_to "ログアウト", destroy_user_session_path, class: "list", metod: :delete
           .avatar-circle
@@ -28,12 +29,13 @@
           .header__right__menu
             = link_to "ログイン", new_user_session_path, class: "list"
             = link_to "新規登録", new_user_registration_path, class: "list"
-    .modal.js-modal
-      .modal__bg.js-modal-close
+    -# tweetモーダル
+    .modal.js-modal-tweet
+      .modal__bg.js-modal-tweet-close
       .modal__content
-        = icon "fas", "times", class: "js-modal-close"
+        = icon "fas", "times", class: "js-modal-tweet-close"
         .form
-          = form_with(model: @tweet, local: true) do |f|
+          = form_with(model: @new_tweet, url: "/tweets", local: true, id: "new_tweet") do |f|
             .tweet-form
               = f.text_area :text, placeholder: "今何してる？", class: "text-field"
             .lower-form
@@ -45,5 +47,25 @@
                   .modal-balloon
               .actions.modal-submit
                 = f.submit "つぶやく", class: "submit-button"
-
-    = yield
+    -# commentモーダル
+    .modal.js-modal-comment
+      .modal__bg.js-modal-comment-close
+      .modal__content
+        = icon "fas", "times", class: "js-modal-comment-close"
+        .form
+          = form_with(model: @tweet, local: true) do |f|
+            .tweet-form
+              = f.text_area :text, placeholder: "コメントしよう！", class: "text-field"
+            .lower-form
+              = f.label :image, class: "image-label" do
+                = f.file_field :image, class: "hidden-form"
+                = icon "far", "image", class: "image-icon"
+                .modal-tooltip
+                  画像投稿
+                  .modal-balloon
+              .actions.modal-submit
+                = f.submit "コメント", class: "submit-button"
+    -# 全体を囲うスタイル
+    .wrapper-contents
+      .contents
+        = yield

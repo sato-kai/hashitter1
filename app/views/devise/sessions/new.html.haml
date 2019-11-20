@@ -1,21 +1,19 @@
-.wrapper-contents
-  .contents
-    .form
-      .form__title
-        ログイン
-      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        .field-wrapper
-          .user-field.login-field
-            .field
-              = f.label :email
-              %br/
-              = f.email_field :email, autofocus: true, autocomplete: "email", class: "input-field"
-            .field
-              = f.label :password
-              %br/
-              = f.password_field :password, autocomplete: "current-password", class: "input-field"
-            .avatar.large-avatar
-              = render partial: "/avatar/default/slim_avatar"
-        .actions
-          = f.submit "ログイン", class: "submit-button"
+.form
+  .form__title
+    ログイン
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .field-wrapper
+      .user-field.login-field
+        .field
+          = f.label :email
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "input-field"
+        .field
+          = f.label :password
+          %br/
+          = f.password_field :password, autocomplete: "current-password", class: "input-field"
+        .avatar.large-avatar
+          = render partial: "/avatar/default/slim_avatar"
+    .actions
+      = f.submit "ログイン", class: "submit-button"
 
