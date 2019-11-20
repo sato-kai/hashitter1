@@ -4,70 +4,41 @@
       %h3.main-content__title
         tweet一覧
       .content
-        -# - @tweets.each do |tweet|
-        .content__box
-          .small-avatar
-          .content__box__post
-            .upper-post
-              .user-name
-                hoge@fuga
-              .post-date
-                00-00-00
-            .lower-post
-              .tweet
-                こんにちはああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-              .image
-              .check-lists
-                .button-list
-                  .tooltipt
-                    編集する
-                    .tooltip-balloon
-                  = link_to "" do
-                    = icon "fas", "edit"
-                .button-list
-                  .tooltipt
-                    削除する
-                    .tooltip-balloon
-                  = link_to "" do
-                    = icon "fas", "trash"
-                .button-list
-                  .tooltipt
-                    いいね！
-                    .tooltip-balloon
-                  = link_to "" do
-                    = icon "fas", "heart"
+        - @tweets.each do |tweet|
+          .content__box
+            .avatar-circle
+              .mini-avatar
+                .avatar
+                  = render partial: "/users/avatar", locals: {user: tweet.user}
+            .content__box__post
+              .upper-post
+                .user-name
+                  = tweet.user.name
+                .post-date
+                  = tweet.created_at.strftime("%Y/%m/%d %H:%M")
+              .lower-post
+                .tweet
+                  = tweet.text
+                - if tweet.image.present?
+                  = image_tag "#{tweet.image}", class: "image"
+                .check-lists
+                  .button-list
+                    .tooltipt
+                      編集する
+                      .tooltip-balloon
+                    = link_to "" do
+                      = icon "fas", "edit"
+                  .button-list
+                    .tooltipt
+                      削除する
+                      .tooltip-balloon
+                    = link_to "" do
+                      = icon "fas", "trash"
+                  .button-list
+                    .tooltipt
+                      いいね！
+                      .tooltip-balloon
+                    = link_to "" do
+                      = icon "fas", "heart"
 
-        .content__box
-          .small-avatar
-          .content__box__post
-        .content__box
-          .small-avatar
-          .content__box__post
-            .upper-post
-              .user-name
-                hoge@fuga
-              .post-date
-                00-00-00
-            .lower-post
-              .tweet
-                こんにちはああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-              .image
-        .content__box
-          .small-avatar
-          .content__box__post
-        .content__box
-          .small-avatar
-          .content__box__post
-            .upper-post
-              .user-name
-                hoge@fuga
-              .post-date
-                00-00-00
-            .lower-post
-              .tweet
-                こんにちはああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-              .image
-        .content__box
-          .small-avatar
-          .content__box__post
     = render partial: "/side_bar"

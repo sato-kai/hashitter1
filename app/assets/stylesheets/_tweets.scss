@@ -13,7 +13,9 @@
         justify-content: space-between;
       }
       .lower-post{
+        text-align: center;
         .tweet{
+          text-align: left;
           width: 100%;
           margin-top: 10px;
           max-height: 70px;
@@ -23,9 +25,11 @@
           -webkit-line-clamp: 3;
         }
         .image{
-          margin: 10px auto 0;
+          margin: 10px auto;
           width: 300px;
-          height: 250px;
+          height: 300px;
+          padding-bottom: 20px;
+          object-fit: cover;
         }
         .check-lists{
           margin-top: 10px;

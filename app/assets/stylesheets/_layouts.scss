@@ -34,24 +34,47 @@ a{
         border-radius: 20px;
         margin-left: 15px;
         padding: 0 5px;
+        cursor: pointer;
       }
       .list:hover{
         border-color: #ad9570;
         background-color: #ad9570;
-        a{
-          color: #ffffff;
-        }
+        color: #ffffff;
       }
     }
-    .header-icon{
-      width: 60px;
-      height: 60px;
-      border: solid 2px #F1EAD7;
-      border-radius: 50%;
-      background-color: #ffffff;
-      margin-left: 15px;
-    }
   }
+}
+
+.header-icon{
+  width: 40px;
+  height: 40px;
+  margin: auto;
+}
+
+
+.modal{
+  display: none;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.modal__bg{
+  background: rgba(0,0,0,0.8);
+  height: 100vh;
+  position: absolute;
+  width: 100%;
+}
+.modal__content{
+  background: #fff;
+  left: 50%;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 40%;
+  z-index: 1200;
 }
 
 .wrapper-contents{

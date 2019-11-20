@@ -1,6 +1,7 @@
-.mini_avatar{
-  height: 30px;
-  width: 30px;
+.mini-avatar{
+  height: 40px;
+  width: 40px;
+  margin: auto;
 }
 .small-avatar{
   width: 60px;
@@ -14,6 +15,15 @@
   margin: 20px auto;
   background-color: #ffffff;
 }
+.avatar-circle{
+  width: 60px;
+  height: 60px;
+  border: solid 2px #F1EAD7;
+  border-radius: 50%;
+  background-color: #ffffff;
+  margin-left: 15px;
+}
+
 @mixin parts{
   position: absolute;
   top: 0;
