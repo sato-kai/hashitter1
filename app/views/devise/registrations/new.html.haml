@@ -1,157 +1,155 @@
-.wrapper-contents
-  .contents
-    .form
-      .form__title
-        新規登録
-      = form_with model: @user, url: user_registration_path, local: true do |f|
-        = render "devise/shared/error_messages", resource: resource
-        .field-wrapper
-          .user-field
-            .form-announce
-              %span.red ＊
-              マークは必須項目です
-            .field
-              = f.label :名前
-              %span.red ＊
-              %br/
-              = f.text_field :name, autofocus: true, autocomplete: "name", class: "input-field"
-            .field
-              = f.label :email
-              %span.red ＊
-              %br/
-              = f.email_field :email, autofocus: true, autocomplete: "email", class: "input-field"
-            .field
-              = f.label :password
-              - if @minimum_password_length
-                %em
-                  (#{@minimum_password_length} 文字以上)
-              %span.red ＊
-              = f.password_field :password, autocomplete: "new-password", class: "input-field"
-            .field
-              = f.label :password_確認
-              %span.red ＊
-              %br/
-              = f.password_field :password_confirmation, autocomplete: "new-password", class: "input-field"
-            .field
-              = f.label :住所
-              %br/
-              = f.select :prefecture, User.prefectures.keys, {prompt: '選択してください'}, class: "input-field"
-            .field
-              = f.label :年齢
-              %br/
-              = f.select :age, User.ages.keys, {prompt: '選択してください'}, class: "input-field"
-            .field
-              = f.label :性別
-              %br/
-              .gender
-                = f.label :gender , value: "男性" do
-                  = f.radio_button :gender, :男性, class: "blue"
-                  男性
-                = f.label :gender , value: "女性" do
-                  = f.radio_button :gender, :女性, class: "red"
-                  女性
-            .field
-              = f.label :プロフィール
-              %br/
-              = f.text_area :profile, class: "input-field"
-          
-          .avatar-wrapper
-            .form-announce
-              あなたのアバターです
-              %br/
-              運動しないと太ってしまいます
-              %br/
-              ランニングの習慣化で健康な毎日を！
-            .avatar.large-avatar
-              = render partial: "/avatar/default/slim_avatar"
-          
-          .avatar-field
-            .form-announce
-              スタイルとカラーが選べます
-              %br/
-              ランニングを続けると
-              %br/
-              新しい服が選べるようになります
-            = f.fields_for :avatar, class: "avatar_form" do |f|
-              .color-select
-                .radio-buttons
-                  
-                  .hair-tab hair
-                  .avatar_parts
-                    = f.radio_button :hair, "mens_hair1", class: "black hidden_button"
-                    = f.label :hair, value: "mens_hair1" do
-                      .parts_preview
-                        = render partial: "/avatar/hair/mens_hair1"
-                    = f.radio_button :hair, "mens_hair2", class: "black hidden_button"
-                    = f.label :hair, value: "mens_hair2" do
-                      .parts_preview
-                        = render partial: "/avatar/hair/mens_hair2"
-                    = f.radio_button :hair, "mens_hair3", class: "black hidden_button"
-                    = f.label :hair, value: "mens_hair3" do
-                      .parts_preview
-                        = render partial: "/avatar/hair/mens_hair3"
-                    = f.radio_button :hair, "ladies_hair1", class: "black hidden_button"
-                    = f.label :hair, value: "ladies_hair1" do
-                      .parts_preview
-                        = render partial: "/avatar/hair/ladies_hair1"
-                    = f.radio_button :hair, "ladies_hair2", class: "black hidden_button"
-                    = f.label :hair, value: "ladies_hair2" do
-                      .parts_preview
-                        = render partial: "/avatar/hair/ladies_hair2"
-                    = f.radio_button :hair, "ladies_hair3", class: "black hidden_button"
-                    = f.label :hair, value: "ladies_hair3" do
-                      .parts_preview
-                        = render partial: "/avatar/hair/ladies_hair3"
-                  .btn-wrapper
-                    = f.radio_button :hair_color, "red", class: "red"
-                    = f.radio_button :hair_color, "yellow", class: "yellow"
-                    = f.radio_button :hair_color, "orange", class: "orange"
-                    = f.radio_button :hair_color, "green", class: "green"
-                    = f.radio_button :hair_color, "skyblue", class: "skyblue"
-                    = f.radio_button :hair_color, "blue", class: "blue"
-                    = f.radio_button :hair_color, "brown", class: "brown"
-                    = f.radio_button :hair_color, "black", class: "black"
-                    = f.radio_button :hair_color, "gray", class: "gray"
-                    = f.radio_button :hair_color, "white", class: "white"
-                  
-                  .upper-body-tab tops
-                  .btn-wrapper
-                    = f.radio_button :tops_color, "red", class: "red"
-                    = f.radio_button :tops_color, "yellow", class: "yellow"
-                    = f.radio_button :tops_color, "orange", class: "orange"
-                    = f.radio_button :tops_color, "green", class: "green"
-                    = f.radio_button :tops_color, "skyblue", class: "skyblue"
-                    = f.radio_button :tops_color, "blue", class: "blue"
-                    = f.radio_button :tops_color, "brown", class: "brown"
-                    = f.radio_button :tops_color, "black", class: "black"
-                    = f.radio_button :tops_color, "gray", class: "gray"
-                    = f.radio_button :tops_color, "white", class: "white"
-                  
-                  .lower-body-tab bottoms
-                  .btn-wrapper
-                    = f.radio_button :bottoms_color, "red", class: "red"
-                    = f.radio_button :bottoms_color, "yellow", class: "yellow"
-                    = f.radio_button :bottoms_color, "orange", class: "orange"
-                    = f.radio_button :bottoms_color, "green", class: "green"
-                    = f.radio_button :bottoms_color, "skyblue", class: "skyblue"
-                    = f.radio_button :bottoms_color, "blue", class: "blue"
-                    = f.radio_button :bottoms_color, "brown", class: "brown"
-                    = f.radio_button :bottoms_color, "black", class: "black"
-                    = f.radio_button :bottoms_color, "gray", class: "gray"
-                    = f.radio_button :bottoms_color, "white", class: "white"
-                  
-                  .shoes-tab shoes
-                  .btn-wrapper
-                    = f.radio_button :shoes_color, "red", class: "red"
-                    = f.radio_button :shoes_color, "yellow", class: "yellow"
-                    = f.radio_button :shoes_color, "orange", class: "orange"
-                    = f.radio_button :shoes_color, "green", class: "green"
-                    = f.radio_button :shoes_color, "skyblue", class: "skyblue"
-                    = f.radio_button :shoes_color, "blue", class: "blue"
-                    = f.radio_button :shoes_color, "brown", class: "brown"
-                    = f.radio_button :shoes_color, "black", class: "black"
-                    = f.radio_button :shoes_color, "gray", class: "gray"
-                    = f.radio_button :shoes_color, "white", class: "white"
+.form
+  .form__title
+    新規登録
+  = form_with model: @user, url: user_registration_path, local: true do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .field-wrapper
+      .user-field
+        .form-announce
+          %span.red ＊
+          マークは必須項目です
+        .field
+          = f.label :名前
+          %span.red ＊
+          %br/
+          = f.text_field :name, autofocus: true, autocomplete: "name", class: "input-field"
+        .field
+          = f.label :email
+          %span.red ＊
+          %br/
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "input-field"
+        .field
+          = f.label :password
+          - if @minimum_password_length
+            %em
+              (#{@minimum_password_length} 文字以上)
+          %span.red ＊
+          = f.password_field :password, autocomplete: "new-password", class: "input-field"
+        .field
+          = f.label :password_確認
+          %span.red ＊
+          %br/
+          = f.password_field :password_confirmation, autocomplete: "new-password", class: "input-field"
+        .field
+          = f.label :住所
+          %br/
+          = f.select :prefecture, User.prefectures.keys, {prompt: '選択してください'}, class: "input-field"
+        .field
+          = f.label :年齢
+          %br/
+          = f.select :age, User.ages.keys, {prompt: '選択してください'}, class: "input-field"
+        .field
+          = f.label :性別
+          %br/
+          .gender
+            = f.label :gender , value: "男性" do
+              = f.radio_button :gender, :男性, class: "blue"
+              男性
+            = f.label :gender , value: "女性" do
+              = f.radio_button :gender, :女性, class: "red"
+              女性
+        .field
+          = f.label :プロフィール
+          %br/
+          = f.text_area :profile, class: "input-field"
+      
+      .avatar-wrapper
+        .form-announce
+          あなたのアバターです
+          %br/
+          運動しないと太ってしまいます
+          %br/
+          ランニングの習慣化で健康な毎日を！
+        .avatar.large-avatar
+          = render partial: "/avatar/default/slim_avatar"
+      
+      .avatar-field
+        .form-announce
+          スタイルとカラーが選べます
+          %br/
+          ランニングを続けると
+          %br/
+          新しい服が選べるようになります
+        = f.fields_for :avatar, class: "avatar_form" do |f|
+          .color-select
+            .radio-buttons
+              
+              .hair-tab hair
+              .avatar_parts
+                = f.radio_button :hair, "mens_hair1", class: "black hidden_button"
+                = f.label :hair, value: "mens_hair1" do
+                  .parts_preview
+                    = render partial: "/avatar/hair/mens_hair1"
+                = f.radio_button :hair, "mens_hair2", class: "black hidden_button"
+                = f.label :hair, value: "mens_hair2" do
+                  .parts_preview
+                    = render partial: "/avatar/hair/mens_hair2"
+                = f.radio_button :hair, "mens_hair3", class: "black hidden_button"
+                = f.label :hair, value: "mens_hair3" do
+                  .parts_preview
+                    = render partial: "/avatar/hair/mens_hair3"
+                = f.radio_button :hair, "ladies_hair1", class: "black hidden_button"
+                = f.label :hair, value: "ladies_hair1" do
+                  .parts_preview
+                    = render partial: "/avatar/hair/ladies_hair1"
+                = f.radio_button :hair, "ladies_hair2", class: "black hidden_button"
+                = f.label :hair, value: "ladies_hair2" do
+                  .parts_preview
+                    = render partial: "/avatar/hair/ladies_hair2"
+                = f.radio_button :hair, "ladies_hair3", class: "black hidden_button"
+                = f.label :hair, value: "ladies_hair3" do
+                  .parts_preview
+                    = render partial: "/avatar/hair/ladies_hair3"
+              .btn-wrapper
+                = f.radio_button :hair_color, "red", class: "red"
+                = f.radio_button :hair_color, "yellow", class: "yellow"
+                = f.radio_button :hair_color, "orange", class: "orange"
+                = f.radio_button :hair_color, "green", class: "green"
+                = f.radio_button :hair_color, "skyblue", class: "skyblue"
+                = f.radio_button :hair_color, "blue", class: "blue"
+                = f.radio_button :hair_color, "brown", class: "brown"
+                = f.radio_button :hair_color, "black", class: "black"
+                = f.radio_button :hair_color, "gray", class: "gray"
+                = f.radio_button :hair_color, "white", class: "white"
+              
+              .upper-body-tab tops
+              .btn-wrapper
+                = f.radio_button :tops_color, "red", class: "red"
+                = f.radio_button :tops_color, "yellow", class: "yellow"
+                = f.radio_button :tops_color, "orange", class: "orange"
+                = f.radio_button :tops_color, "green", class: "green"
+                = f.radio_button :tops_color, "skyblue", class: "skyblue"
+                = f.radio_button :tops_color, "blue", class: "blue"
+                = f.radio_button :tops_color, "brown", class: "brown"
+                = f.radio_button :tops_color, "black", class: "black"
+                = f.radio_button :tops_color, "gray", class: "gray"
+                = f.radio_button :tops_color, "white", class: "white"
+              
+              .lower-body-tab bottoms
+              .btn-wrapper
+                = f.radio_button :bottoms_color, "red", class: "red"
+                = f.radio_button :bottoms_color, "yellow", class: "yellow"
+                = f.radio_button :bottoms_color, "orange", class: "orange"
+                = f.radio_button :bottoms_color, "green", class: "green"
+                = f.radio_button :bottoms_color, "skyblue", class: "skyblue"
+                = f.radio_button :bottoms_color, "blue", class: "blue"
+                = f.radio_button :bottoms_color, "brown", class: "brown"
+                = f.radio_button :bottoms_color, "black", class: "black"
+                = f.radio_button :bottoms_color, "gray", class: "gray"
+                = f.radio_button :bottoms_color, "white", class: "white"
+              
+              .shoes-tab shoes
+              .btn-wrapper
+                = f.radio_button :shoes_color, "red", class: "red"
+                = f.radio_button :shoes_color, "yellow", class: "yellow"
+                = f.radio_button :shoes_color, "orange", class: "orange"
+                = f.radio_button :shoes_color, "green", class: "green"
+                = f.radio_button :shoes_color, "skyblue", class: "skyblue"
+                = f.radio_button :shoes_color, "blue", class: "blue"
+                = f.radio_button :shoes_color, "brown", class: "brown"
+                = f.radio_button :shoes_color, "black", class: "black"
+                = f.radio_button :shoes_color, "gray", class: "gray"
+                = f.radio_button :shoes_color, "white", class: "white"
 
-        .actions
-          = f.submit "新規登録", class: "submit-button"
+    .actions
+      = f.submit "新規登録", class: "submit-button"
