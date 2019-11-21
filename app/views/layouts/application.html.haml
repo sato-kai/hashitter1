@@ -12,10 +12,6 @@
     %header.header
       .header__left
         = link_to "Hashitter", root_path, class: "home-link"
-      -# - if flash[:notice]
-      -#   .flash-notice
-      -#     = flash[:notice]
-      
       .header__right
         - if user_signed_in?
           %ul.header__right__menu
@@ -33,10 +29,13 @@
           .header__right__menu
             = link_to "ログイン", new_user_session_path, class: "list"
             = link_to "新規登録", new_user_registration_path, class: "list"
+    
+    -# フラッシュ
     - if flash[:notice]
       .flash-notice
         = flash[:notice]
-    -# モーダル
+    
+    -# tweetモーダル（新規投稿）
     .modal.js-modal-new-tweet
       .modal__bg.js-modal-close
       .modal__content
@@ -46,7 +45,7 @@
             つぶやき
           = form_with(model: @new_tweet, url: "/tweets", local: true, id: "new_tweet") do |f|
             = render partial: "/layouts/modal_form", locals: {f: f}
-    -# モーダル
+    -# tweetモーダル（編集）
     .modal.js-modal-edit-tweet
       .modal__bg.js-modal-close
       .modal__content
@@ -56,7 +55,22 @@
             つぶやきを編集
           = form_with(model: @tweet, local: true) do |f|
             = render partial: "/layouts/modal_form", locals: {f: f}
-    -# commentモーダル
+    -# tweetモーダル（削除）
+    .modal.js-modal-destroy-tweet
+      .modal__bg.js-modal-close
+      .modal__content
+        = icon "fas", "times", class: "js-modal-close"
+        .modal-form
+          .modal-form__title
+            本当に削除しますか？
+            .destroy-buttons
+              .js-modal-close.actions.modal-submit
+                .submit-button
+                  やめる
+              .actions.modal-submit
+                #delete-button.submit-button
+                  削除
+    -# commentモーダル（新規投稿）
     .modal.js-modal-comment
       .modal__bg.js-modal-comment-close
       .modal__content
