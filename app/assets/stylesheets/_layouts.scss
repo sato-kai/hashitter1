@@ -55,6 +55,21 @@ a{
   margin: auto;
 }
 
+.flash-notice{
+  width: 300px;
+  height: 40px;
+  line-height: 40px;
+  margin: auto;
+  color: #ffffff;
+  background-color: #ffb62f;
+  text-align: center;
+  border-radius: 20px;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
 
 .modal{
   display: none;
@@ -114,7 +129,7 @@ a{
       right: 80px;
       &__title{
         text-align: center;
-        width: 160px;
+        width: 200px;
         font-size: large;
         line-height: 40px;
         font-weight: bold;

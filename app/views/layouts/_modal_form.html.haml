@@ -1,0 +1,12 @@
+.tweet-form
+  = f.text_area :text, placeholder: "今何してる？", class: "text-field"
+.lower-form
+  = f.label :image, class: "image-label" do
+    = f.file_field :image, class: "hidden-form"
+    = icon "far", "image", class: "image-icon"
+    .modal-tooltip
+      画像投稿
+      .modal-balloon
+  .actions.modal-submit
+    = f.submit "送信", class: "submit-button"
+
