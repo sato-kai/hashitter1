@@ -1,3 +1,13 @@
+.modal-form{
+  width: 100%;
+  &__title{
+    text-align: center;
+    padding: 10px 0;
+    color: #ad9570;
+  }
+}
+
+
 .tweet-form{
   display: flex;
   justify-content: center;
@@ -55,7 +65,7 @@
     }
   }
 }
-.js-modal-tweet-close{
+.js-modal-close{
   font-size: 20px;
 }
 .modal-submit{

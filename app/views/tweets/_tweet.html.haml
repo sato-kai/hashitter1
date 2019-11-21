@@ -10,28 +10,19 @@
     - if tweet.image.present?
       = image_tag "#{tweet.image}", class: "image"
     .check-lists
-      - if user_signed_in? && current_user.id == tweet.user_id
-        .button-list
-          .tooltipt
-            編集する
-            .tooltip-balloon
-          = icon "fas", "edit"
-        .button-list
-          .tooltipt
-            削除する
-            .tooltip-balloon
-          = icon "fas", "trash"
-        .button-list.js-modal-comment-open
-          .tooltipt
-            コメント
-            .tooltip-balloon
-          = icon "far", "comment"
-        .button-list
-          .tooltipt
-            いいね！
-            .tooltip-balloon
-          = icon "fas", "heart"
-      - else
+      - if user_signed_in?
+        - if current_user.id == tweet.user_id
+          - if action_name == "show"
+            .button-list.js-modal-edit-tweet-open
+              .tooltipt
+                編集する
+                .tooltip-balloon
+              = icon "fas", "edit"
+          .button-list
+            .tooltipt
+              削除する
+              .tooltip-balloon
+            = icon "fas", "trash"
         .button-list.js-modal-comment-open
           .tooltipt
             コメント
