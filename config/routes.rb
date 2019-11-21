@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   end
   root 'tweets#index'
   resources :users, only: [:show]
-  resources :tweets
+  resources :tweets do
+    resources :comments #, only: [:create]
+  end
+
 end

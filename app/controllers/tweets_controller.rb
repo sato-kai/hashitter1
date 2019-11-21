@@ -9,6 +9,7 @@ class TweetsController < ApplicationController
 
   def create
     @new_tweet = Tweet.new(tweet_params)
+    binding.pry
     if @new_tweet.save
       redirect_to action: :index
       flash[:notice] = "tweetを投稿しました"
@@ -20,6 +21,8 @@ class TweetsController < ApplicationController
 
   def show
     @new_tweet = Tweet.new
+    @comment = Comment.new
+    @comments = @tweet.comments.includes(:user)
   end
 
   def update

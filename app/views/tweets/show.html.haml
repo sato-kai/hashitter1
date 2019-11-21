@@ -10,5 +10,47 @@
           .avatar
             = render partial: "/users/avatar", locals: {user: @tweet.user}
       = render partial: "tweet", locals: {tweet: @tweet}
+  %h3.main-content__title
+    comment
+  .content
+    - if @comments.present?
+      - @comments.each do |comment|
+        .content__box
+          .avatar-circle
+            .mini-avatar
+              .avatar
+                = render partial: "/users/avatar", locals: {user: comment.user}
+          .content__box__post
+            .upper-post
+              .user-name
+                = comment.user.name
+              .post-date
+                = comment.created_at.strftime("%Y/%m/%d %H:%M")
+            .lower-post
+              .tweet
+                = comment.text
+    - else
+      .content__box
+        このtweetにコメントしよう！　
+        %span.js-modal-comment-open
+          = icon "far", "comment"
+        　ボタンからコメントできるよ！
+
+-# commentモーダル
+- if current_user
+  .modal.js-modal-comment
+    .modal__bg.js-modal-comment-close
+    .modal__content
+      = icon "fas", "times", class: "js-modal-comment-close"
+      .modal-form
+        .modal-form__title
+          コメント
+      .form
+        = form_with(model: [@tweet, @comment], local: true) do |f|
+          .tweet-form
+            = f.text_area :text, placeholder: "コメントしよう！", class: "text-field"
+          .lower-form
+            .actions
+              = f.submit "コメント", class: "submit-button"
 
 = render partial: "/side_bar"
