@@ -24,13 +24,14 @@
               .tooltip-balloon
             = link_to tweet_path(tweet), method: :delete, id: "tweet-delete-button" do
               = icon "fas", "trash"
-        .button-list.js-modal-comment-open
-          .tooltipt
-            コメント
-            .tooltip-balloon
-          = icon "far", "comment"
+        - if action_name == "show"
+          .button-list.js-modal-comment-open
+            .tooltipt
+              コメント
+              .tooltip-balloon
+            = icon "far", "comment"
         .button-list
           .tooltipt
             いいね！
             .tooltip-balloon
-          = icon "fas", "heart"
+          = render partial: 'likes/like', locals: { tweet: tweet, likes: @likes}

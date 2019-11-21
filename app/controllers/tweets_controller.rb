@@ -3,13 +3,13 @@ class TweetsController < ApplicationController
   before_action :set_tweet, except: [:index, :create]
 
   def index
-    @tweets = Tweet.includes(:user).order("created_at DESC")
+    @tweets = Tweet.includes(:user).order("created_at DESC").page(params[:page]).per(10)
     @new_tweet = Tweet.new
+    @tweet_ranking = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) DESC').limit(3).pluck(:tweet_id))
   end
 
   def create
     @new_tweet = Tweet.new(tweet_params)
-    binding.pry
     if @new_tweet.save
       redirect_to action: :index
       flash[:notice] = "tweetを投稿しました"
@@ -23,6 +23,7 @@ class TweetsController < ApplicationController
     @new_tweet = Tweet.new
     @comment = Comment.new
     @comments = @tweet.comments.includes(:user)
+    @tweet_ranking = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) DESC').limit(3).pluck(:tweet_id))
   end
 
   def update

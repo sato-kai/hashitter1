@@ -6,11 +6,15 @@
     background-color: #ffffff;
     display: flex;
     &__post{
-      width: calc(100% - 60px);
+      width: calc(100% - 75px);
       padding: 0 20px;
       .upper-post{
+        width: 100%;
         display: flex;
         justify-content: space-between;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
       .lower-post{
         text-align: center;
