@@ -1,6 +1,8 @@
 .main-content
   %h3.main-content__title
     tweet一覧
+  %span
+  = paginate @tweets
   .content
     - @tweets.each do |tweet|
       = link_to tweet_path(tweet.id) do
@@ -10,4 +12,5 @@
               .avatar
                 = render partial: "/users/avatar", locals: {user: tweet.user}
           = render partial: "tweet", locals: {tweet: tweet}
+    = paginate @tweets
 = render partial: "/side_bar"

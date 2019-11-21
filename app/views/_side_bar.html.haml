@@ -4,27 +4,36 @@
     = icon "fas", "thumbs-up"
     tweetランキング
   .content
-    %span
-    = icon "fas", "crown"
-    .content__box
-      .small-avatar
-      .content__box__post
-        .upper-post
-          .user-name
-            hoge@fuga
-          .post-date
-            00-00-00
-        .lower-post
-          .tweet
-            こんにちはああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+    = icon "fas", "crown", class: "ranking"
+    - @tweet_ranking.each.with_index(1) do |tweet, i|
+      = link_to tweet_path(tweet) do
+        No.
+        = i
+        .content__box
+          .avatar-circle
+            .mini-avatar
+              .avatar
+                = render partial: "/users/avatar", locals: {user: tweet.user}
+          .content__box__post
+            .upper-post
+              .user-name
+                = tweet.user.name
+            .lower-post
+              .tweet
+                = tweet.text
+              .check-lists
+                .button-list
+                  .iine__button
+                    = icon "fas", "heart"
+                    = tweet.likes.count
+
 
   %h3.side-content__title
     %span
     = icon "fas", "running"
     distanceランキング
   .content
-    %span
-    = icon "fas", "crown"
+    = icon "fas", "crown", class: "ranking"
     .content__box
       .small-avatar
       .content__box__post
