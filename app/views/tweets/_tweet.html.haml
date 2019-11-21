@@ -18,11 +18,12 @@
                 編集する
                 .tooltip-balloon
               = icon "fas", "edit"
-          .button-list
+          .button-list.js-modal-destroy-tweet-open
             .tooltipt
               削除する
               .tooltip-balloon
-            = icon "fas", "trash"
+            = link_to tweet_path(tweet), method: :delete, id: "tweet-delete-button" do
+              = icon "fas", "trash"
         .button-list.js-modal-comment-open
           .tooltipt
             コメント

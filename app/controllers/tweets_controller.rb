@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
 
-  before_action :set_tweet, only: [:show, :edit]
+  before_action :set_tweet, except: [:index, :create]
 
   def index
     @tweets = Tweet.includes(:user).order("created_at DESC")
@@ -23,14 +23,24 @@ class TweetsController < ApplicationController
   end
 
   def update
-    tweet = Tweet.find(params[:id])
-    if tweet.user_id == current_user.id
-      tweet.update(tweet_params)
+    if @tweet.user_id == current_user.id
+      @tweet.update(tweet_params)
       redirect_to root_path
       flash[:notice] = "tweetを編集しました"
     else
       redirect_to root_path
       flash[:notice] = "tweetを編集できませんでした"
+    end
+  end
+
+  def destroy
+    if @tweet.user_id == current_user.id
+      @tweet.destroy
+      redirect_to root_path
+      flash[:notice] = "tweetを削除しました"
+    else
+      redirect_to root_path
+      flash[:notice] = "tweetを削除できませんでした"
     end
   end
 
