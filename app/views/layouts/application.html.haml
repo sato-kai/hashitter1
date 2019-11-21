@@ -70,24 +70,6 @@
               .actions.modal-submit
                 #delete-button.submit-button
                   削除
-    -# commentモーダル（新規投稿）
-    .modal.js-modal-comment
-      .modal__bg.js-modal-comment-close
-      .modal__content
-        = icon "fas", "times", class: "js-modal-comment-close"
-        .form
-          = form_with(model: @tweet, local: true) do |f|
-            .tweet-form
-              = f.text_area :text, placeholder: "コメントしよう！", class: "text-field"
-            .lower-form
-              = f.label :image, class: "image-label" do
-                = f.file_field :image, class: "hidden-form"
-                = icon "far", "image", class: "image-icon"
-                .modal-tooltip
-                  画像投稿
-                  .modal-balloon
-              .actions.modal-submit
-                = f.submit "コメント", class: "submit-button"
     -# 全体を囲うスタイル
     .wrapper-contents
       .contents
