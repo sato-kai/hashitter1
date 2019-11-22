@@ -1,7 +1,6 @@
 $(document).on("turbolinks:load",function(){
   // tweet新規投稿
   $('.js-modal-new-tweet-open').on('click',function(){
-    console.log(this)
     $('.js-modal-new-tweet').fadeIn();
     return false;
   });
@@ -17,7 +16,6 @@ $(document).on("turbolinks:load",function(){
   });
   // tweet編集
   $('.js-modal-edit-tweet-open').on('click',function(){
-    console.log(this)
     $('.js-modal-edit-tweet').fadeIn();
     return false;
   });
