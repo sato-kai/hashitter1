@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_21_185331) do
+ActiveRecord::Schema.define(version: 2019_11_22_055650) do
 
   create_table "avatars", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2019_11_21_185331) do
     t.integer "prefecture"
     t.integer "gender"
     t.integer "age"
-    t.integer "profile"
+    t.text "profile"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

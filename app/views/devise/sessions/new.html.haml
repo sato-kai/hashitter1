@@ -12,8 +12,8 @@
           = f.label :password
           %br/
           = f.password_field :password, autocomplete: "current-password", class: "input-field"
+        .actions
+          = f.submit "ログイン", class: "submit-button"
         .avatar.large-avatar
           = render partial: "/avatar/default/slim_avatar"
-    .actions
-      = f.submit "ログイン", class: "submit-button"
 
