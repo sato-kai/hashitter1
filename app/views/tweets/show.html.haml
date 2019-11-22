@@ -5,10 +5,11 @@
     = link_to "戻る", :back, class: "back-link"
   .content
     .content__box
-      .avatar-circle
-        .mini-avatar
-          .avatar
-            = render partial: "/users/avatar", locals: {user: @tweet.user}
+      = link_to user_path(@tweet.user) do
+        .avatar-circle
+          .mini-avatar
+            .avatar
+              = render partial: "/users/avatar", locals: {user: @tweet.user}
       = render partial: "tweet", locals: {tweet: @tweet}
   %h3.main-content__title
     comment
@@ -16,10 +17,11 @@
     - if @comments.present?
       - @comments.each do |comment|
         .content__box
-          .avatar-circle
-            .mini-avatar
-              .avatar
-                = render partial: "/users/avatar", locals: {user: comment.user}
+          = link_to user_path(comment.user) do
+            .avatar-circle
+              .mini-avatar
+                .avatar
+                  = render partial: "/users/avatar", locals: {user: comment.user}
           .content__box__post
             .upper-post
               .user-name

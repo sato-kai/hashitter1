@@ -112,14 +112,13 @@ a{
       overflow: scroll;
       padding: 20px;
       &__title{
-        width: 100px;
+        display: inline-block;
         line-height: 40px;
         text-align: center;
-        margin: 0 0 10px 0;
+        margin-bottom: 10px;
         color: #ad9570;
         font-size: large;
         font-weight: bold;
-        border-bottom: solid 2px #ad9570;
       }
     }
     .side-content{
@@ -137,12 +136,24 @@ a{
         color: #ad9570;
         border-bottom: solid 2px #ad9570;
         margin: 0 auto 10px;
+        cursor: pointer;
       }
     }
   }
+}
+
+.active{
+  border-bottom: solid 2px #ad9570;
 }
 .ranking{
   margin-top: 10px;
   padding-bottom: 10px;
   color: #ffb62f;
+}
+
+.like-heart{
+  color: red;
+}
+.like-tweets{
+  float: right;
 }

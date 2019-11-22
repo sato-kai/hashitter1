@@ -1,0 +1,68 @@
+.main-content
+  .user-content
+    .user-content__left
+      .big-avatar-circle
+        .big-avatar
+          .avatar
+            = render partial: "/users/avatar", locals: {user: @user}
+    .user-content__right
+      %table.user-box
+        %tr.user-box__line
+          %td.inline
+            名前
+          %td.inline
+            = @user.name
+        %tr.user-box__line
+          %td.inline
+            年齢
+          %td.inline
+            = @user.age
+        %tr.user-box__line
+          %td.inline
+            性別
+          %td.inline
+            = @user.gender
+        %tr.user-box__line
+          %td.inline
+            住所
+          %td.inline
+            = @user.prefecture
+        %tr.user-box__line
+          %td.inline
+            プロフィール
+          %td.inline
+            = @user.profile
+        
+      .user-edit
+        = link_to "", class: "user-edit__button" do
+          ユーザーを編集する
+  %h3.main-content__title.user-like-tweets.active
+    %span
+    = @user.name
+    %span
+    さんの
+    tweet一覧
+  %h3.main-content__title.like-tweets
+    いいねしたtweet
+  %span
+  = paginate @tweets
+  .content.user-tweet-content
+    - @tweets.each do |tweet|
+      = link_to tweet_path(tweet.id) do
+        .content__box
+          .avatar-circle
+            .mini-avatar
+              .avatar
+                = render partial: "/users/avatar", locals: {user: tweet.user}
+          = render partial: "/tweets/tweet", locals: {tweet: tweet}
+    = paginate @tweets
+  .content.like-content
+    - @user.likes.each do |like|
+      = link_to tweet_path(like.tweet.id) do
+        .content__box
+          .avatar-circle
+            .mini-avatar
+              .avatar
+                = render partial: "/users/avatar", locals: {user: like.tweet.user}
+          = render partial: "/tweets/tweet", locals: {tweet: like.tweet}
+= render partial: "/side_bar"

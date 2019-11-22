@@ -1,0 +1,15 @@
+$(document).on("turbolinks:load",function(){
+  $('.like-content').hide();
+  $('.like-tweets').on('click',function(){
+    $('.user-tweet-content').hide();
+    $('.like-content').show();
+    $('.user-like-tweets').removeClass("active");
+    $('.like-tweets').addClass("active");
+  });
+  $('.user-like-tweets').on('click',function(){
+    $('.like-content').hide();
+    $('.user-tweet-content').show();
+    $('.like-tweets').removeClass("active");
+    $('.user-like-tweets').addClass("active");
+  });
+});
