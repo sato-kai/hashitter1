@@ -20,11 +20,12 @@
               .js-modal-new-tweet-open
                 TWEET
             = link_to "ログアウト", destroy_user_session_path, class: "list", metod: :delete
-          .avatar-circle
-            .header-icon
-              .avatar
-                = link_to user_path(current_user), class: "list" do
-                  = render partial: "/users/avatar", locals: {user: current_user}
+          - unless controller_name == "users" && action_name == "edit"
+            .avatar-circle
+              .header-icon
+                .avatar
+                  = link_to user_path(current_user), class: "list" do
+                    = render partial: "/users/avatar", locals: {user: current_user}
         - else
           .header__right__menu
             = link_to "ログイン", new_user_session_path, class: "list"

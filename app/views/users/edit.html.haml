@@ -1,8 +1,7 @@
 .form
   .form__title
-    新規登録
-  = form_with model: @user, url: user_registration_path, local: true do |f|
-    = render "devise/shared/error_messages", resource: resource
+    編集する
+  = form_with model: @user, local: true do |f|
     .field-wrapper
       .user-field
         .form-announce
@@ -18,18 +17,6 @@
           %span.red ＊
           %br/
           = f.email_field :email, autofocus: true, autocomplete: "email", class: "input-field"
-        .field
-          = f.label :password
-          - if @minimum_password_length
-            %em
-              (#{@minimum_password_length} 文字以上)
-          %span.red ＊
-          = f.password_field :password, autocomplete: "new-password", class: "input-field"
-        .field
-          = f.label :password_確認
-          %span.red ＊
-          %br/
-          = f.password_field :password_confirmation, autocomplete: "new-password", class: "input-field"
         .field
           = f.label :住所
           %br/
@@ -61,7 +48,7 @@
           %br/
           ランニングの習慣化で健康な毎日を！
         .avatar.large-avatar
-          = render partial: "/avatar/default/slim_avatar"
+          = render partial: "/users/avatar", locals: { user: @user }
       
       .avatar-field
         .form-announce
@@ -73,7 +60,7 @@
         = f.fields_for :avatar, class: "avatar_form" do |f|
           .color-select
             .radio-buttons
-              
+              -# 髪型
               .hair-tab hair
               .avatar_parts
                 = f.radio_button :hair, "mens_hair1", class: "black hidden_button"
@@ -111,8 +98,23 @@
                 = f.radio_button :hair_color, "black", class: "black"
                 = f.radio_button :hair_color, "gray", class: "gray"
                 = f.radio_button :hair_color, "white", class: "white"
-              
+              -# トップス
               .tops-tab tops
+              .avatar_parts
+                = f.radio_button :tops, "slim", class: "hidden_button"
+                = f.label :tops, value: "slim" do
+                  .parts_preview.tops_preview
+                    = render partial: "/avatar/tops/slim"
+                
+                = f.radio_button :tops, "tops1", class: "hidden_button"
+                = f.label :tops, value: "tops1" do
+                  .parts_preview.tops_preview
+                    = render partial: "/avatar/tops/tops1"
+                
+                = f.radio_button :tops, "tops2", class: "hidden_button"
+                = f.label :tops, value: "tops2" do
+                  .parts_preview.tops_preview
+                    = render partial: "/avatar/tops/tops2"
               .btn-wrapper
                 = f.radio_button :tops_color, "red", class: "red"
                 = f.radio_button :tops_color, "yellow", class: "yellow"
@@ -124,8 +126,29 @@
                 = f.radio_button :tops_color, "black", class: "black"
                 = f.radio_button :tops_color, "gray", class: "gray"
                 = f.radio_button :tops_color, "white", class: "white"
-              
+              -# ボトムス
               .bottoms-tab bottoms
+              .avatar_parts
+                = f.radio_button :bottoms, "slim", class: "hidden_button"
+                = f.label :bottoms, value: "slim" do
+                  .parts_preview.bottoms_preview
+                    = render partial: "/avatar/bottoms/slim"
+                
+                = f.radio_button :bottoms, "bottoms1", class: "hidden_button"
+                = f.label :bottoms, value: "bottoms1" do
+                  .parts_preview.bottoms_preview
+                    = render partial: "/avatar/bottoms/bottoms1"
+                
+                = f.radio_button :bottoms, "bottoms2", class: "hidden_button"
+                = f.label :bottoms, value: "bottoms2" do
+                  .parts_preview.bottoms_preview
+                    = render partial: "/avatar/bottoms/bottoms2"
+                
+                = f.radio_button :bottoms, "bottoms3", class: "hidden_button"
+                = f.label :bottoms, value: "bottoms3" do
+                  .parts_preview.bottoms_preview
+                    = render partial: "/avatar/bottoms/bottoms3"
+              
               .btn-wrapper
                 = f.radio_button :bottoms_color, "red", class: "red"
                 = f.radio_button :bottoms_color, "yellow", class: "yellow"
@@ -151,5 +174,6 @@
                 = f.radio_button :shoes_color, "gray", class: "gray"
                 = f.radio_button :shoes_color, "white", class: "white"
 
-    .actions
-      = f.submit "新規登録", class: "submit-button"
+    .user-post
+      .actions
+        = f.submit "編集する", class: "submit-button"
