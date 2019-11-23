@@ -25,35 +25,17 @@ set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
 
-# デプロイ処理が終わった後、Unicornを再起動するための記述
-after 'deploy:publishing', 'deploy:restart'
-namespace :deploy do
-  task :restart do
-    invoke 'unicorn:restart'
-  end
-end
-
-#Capistranoのバージョンを固定
-lock "~> 3.11.1"
-set :application, 'hashitter1'
-#~~~~中略~~~~~
-
 #secrets.ymlではリリースバージョン間でシンボリックリンクにして共有
 #credentials.yml.encではmasterkeyにする（今回）
 set :linked_files, %w{config/master.key}
 
+# デプロイ処理が終わった後、Unicornを再起動するための記述
 after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
 
   task :restart do
     invoke 'unicorn:restart'
   end
-# restartだとキャッシュが残るので下記の書き方でも良い
-# task :restart do
-#   invoke 'unicorn:stop'
-#   invoke 'unicorn:start'
-# end
-
   desc 'upload master.key'
   task :upload do
     on roles(:app) do |host|
