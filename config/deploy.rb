@@ -35,7 +35,7 @@ end
 
 #Capistranoのバージョンを固定
 lock "~> 3.11.1"
-set :application, .....
+set :application, 'hashitter1'
 #~~~~中略~~~~~
 
 #secrets.ymlではリリースバージョン間でシンボリックリンクにして共有
