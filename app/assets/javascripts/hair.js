@@ -63,47 +63,40 @@ $(document).on("turbolinks:load",function(){
   $('input[name="user[avatar_attributes][hair]"]:radio').change(function(){
     $('#hair').remove();
     var hairStyle = $('input[name="user[avatar_attributes][hair]"]:checked').val();
-    var color = $('input[name="user[avatar_attributes][hair_color]"]:checked').attr('class');
+    var color = $('#hair-color-field').val();
     if (hairStyle == 'mens_hair1'){
       $('#hair').remove();
       appendMensHair1();
-      $('#hair').addClass(color);
+      $('#hair').css('fill', color)
     }else if (hairStyle == 'mens_hair2'){
       $("#hair").remove();
       appendMensHair2();
-      $('#hair').addClass(color);
+      $('#hair').css('fill', color)
     }else if (hairStyle == 'mens_hair3'){
       $('#hair').remove();
       appendMensHair3();
-      $('#hair').addClass(color);
+      $('#hair').css('fill', color)
     }else if (hairStyle == 'ladies_hair1'){
       $('#hair').remove();
       appendLadiesHair1();
-      $('#hair').addClass(color);
+      $('#hair').css('fill', color)
     }else if (hairStyle == 'ladies_hair2'){
       $('#hair').remove();
       appendLadiesHair2();
-      $('#hair').addClass(color);
+      $('#hair').css('fill', color)
     }else {
       $('#hair').remove();
       appendLadiesHair3();
-      $('#hair').addClass(color);
+      $('#hair').css('fill', color)
     };
     
   });
 
-  $('input[name="user[avatar_attributes][hair_color]"]:radio').change(function(){
-    var color = this.className;
-    var hairStyle = $('input[name="user[avatar_attributes][hair]"]:checked').val();
-    if ($(hairStyle).length){
-    $('#hair').removeClass();
-    $('#hair').addClass('mens-hair');
-    $('#hair').addClass(color);
-    }else {
-      $('#hair').removeClass();
-      $('#hair').addClass('ladies-hair');
-      $('#hair').addClass(color);
-    }
+  $('input[name="user[avatar_attributes][hair_color]"]').change(function(){
+    var color = $(this).val();
+    $('#hair').css('fill', color);
+    $('#hidden-hair-color').val(color);
+    $('#hair-color-field').val(color)
   });
 
 });

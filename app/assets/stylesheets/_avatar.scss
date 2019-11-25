@@ -74,20 +74,11 @@
   .hidden_button{
     display: none;
   }
-  .tops_preview{
-    margin-top: -30px;
-    height: 60px;
-    width: 60px;
-  }
-  .bottoms_preview{
-
-  }
   .parts_preview{
     height: 30px;
     width: 30px;
     margin-bottom: 10px;
     #parker{
-      // margin-top: -35px;
       height: 100%;
       width: 100%;
       position: relative;
@@ -101,12 +92,10 @@
     }
   }
   .tops_preview{
-    margin-top: -30px;
     height: 60px;
     width: 60px;
   }
   .bottoms_preview{
-    margin: -60px 0 20px 0;
     height: 60px;
     width: 60px;
   }

@@ -59,121 +59,127 @@
           新しい服が選べるようになります
         = f.fields_for :avatar, class: "avatar_form" do |f|
           .color-select
+            .color-select__announce
+              編集する部分をクリックしてください
             .radio-buttons
               -# 髪型
-              .hair-tab hair
-              .avatar_parts
-                = f.radio_button :hair, "mens_hair1", class: "black hidden_button"
-                = f.label :hair, value: "mens_hair1" do
-                  .parts_preview
-                    = render partial: "/avatar/hair/mens_hair1"
-                = f.radio_button :hair, "mens_hair2", class: "black hidden_button"
-                = f.label :hair, value: "mens_hair2" do
-                  .parts_preview
-                    = render partial: "/avatar/hair/mens_hair2"
-                = f.radio_button :hair, "mens_hair3", class: "black hidden_button"
-                = f.label :hair, value: "mens_hair3" do
-                  .parts_preview
-                    = render partial: "/avatar/hair/mens_hair3"
-                = f.radio_button :hair, "ladies_hair1", class: "black hidden_button"
-                = f.label :hair, value: "ladies_hair1" do
-                  .parts_preview
-                    = render partial: "/avatar/hair/ladies_hair1"
-                = f.radio_button :hair, "ladies_hair2", class: "black hidden_button"
-                = f.label :hair, value: "ladies_hair2" do
-                  .parts_preview
-                    = render partial: "/avatar/hair/ladies_hair2"
-                = f.radio_button :hair, "ladies_hair3", class: "black hidden_button"
-                = f.label :hair, value: "ladies_hair3" do
-                  .parts_preview
-                    = render partial: "/avatar/hair/ladies_hair3"
-              .btn-wrapper
-                = f.radio_button :hair_color, "red", class: "red"
-                = f.radio_button :hair_color, "yellow", class: "yellow"
-                = f.radio_button :hair_color, "orange", class: "orange"
-                = f.radio_button :hair_color, "green", class: "green"
-                = f.radio_button :hair_color, "skyblue", class: "skyblue"
-                = f.radio_button :hair_color, "blue", class: "blue"
-                = f.radio_button :hair_color, "brown", class: "brown"
-                = f.radio_button :hair_color, "black", class: "black"
-                = f.radio_button :hair_color, "gray", class: "gray"
-                = f.radio_button :hair_color, "white", class: "white"
+              .hair-tab.hidden-tab
+                hair
+              .select-parts
+                .avatar_parts
+                  = f.radio_button :hair, "mens_hair1", class: "black hidden_button"
+                  = f.label :hair, value: "mens_hair1" do
+                    .parts_preview
+                      = render partial: "/avatar/hair/mens_hair1"
+                  = f.radio_button :hair, "mens_hair2", class: "black hidden_button"
+                  = f.label :hair, value: "mens_hair2" do
+                    .parts_preview
+                      = render partial: "/avatar/hair/mens_hair2"
+                  = f.radio_button :hair, "mens_hair3", class: "black hidden_button"
+                  = f.label :hair, value: "mens_hair3" do
+                    .parts_preview
+                      = render partial: "/avatar/hair/mens_hair3"
+                  = f.radio_button :hair, "ladies_hair1", class: "black hidden_button"
+                  = f.label :hair, value: "ladies_hair1" do
+                    .parts_preview
+                      = render partial: "/avatar/hair/ladies_hair1"
+                  = f.radio_button :hair, "ladies_hair2", class: "black hidden_button"
+                  = f.label :hair, value: "ladies_hair2" do
+                    .parts_preview
+                      = render partial: "/avatar/hair/ladies_hair2"
+                  = f.radio_button :hair, "ladies_hair3", class: "black hidden_button"
+                  = f.label :hair, value: "ladies_hair3" do
+                    .parts_preview
+                      = render partial: "/avatar/hair/ladies_hair3"
+                .btn-wrapper
+                  = f.radio_button :hair_color, "#202020", class: "black"
+                  = f.radio_button :hair_color, "#4f2702", class: "brown"
+                  = f.radio_button :hair_color, "#808080", class: "gray"
+                  = f.radio_button :hair_color, "#fff100", class: "yellow"
+                  .arrange-color
+                    調整
+                    = f.color_field :hair_color, id: "hair-color-field"
+                  = f.hidden_field :hair_color, id: "hidden-hair-color"
               -# トップス
-              .tops-tab tops
-              .avatar_parts
-                = f.radio_button :tops, "slim", class: "hidden_button"
-                = f.label :tops, value: "slim" do
-                  .parts_preview.tops_preview
-                    = render partial: "/avatar/tops/slim"
-                
-                = f.radio_button :tops, "tops1", class: "hidden_button"
-                = f.label :tops, value: "tops1" do
-                  .parts_preview.tops_preview
-                    = render partial: "/avatar/tops/tops1"
-                
-                = f.radio_button :tops, "tops2", class: "hidden_button"
-                = f.label :tops, value: "tops2" do
-                  .parts_preview.tops_preview
-                    = render partial: "/avatar/tops/tops2"
-              .btn-wrapper
-                = f.radio_button :tops_color, "red", class: "red"
-                = f.radio_button :tops_color, "yellow", class: "yellow"
-                = f.radio_button :tops_color, "orange", class: "orange"
-                = f.radio_button :tops_color, "green", class: "green"
-                = f.radio_button :tops_color, "skyblue", class: "skyblue"
-                = f.radio_button :tops_color, "blue", class: "blue"
-                = f.radio_button :tops_color, "brown", class: "brown"
-                = f.radio_button :tops_color, "black", class: "black"
-                = f.radio_button :tops_color, "gray", class: "gray"
-                = f.radio_button :tops_color, "white", class: "white"
+              .tops-tab.hidden-tab
+                tops
+              .select-parts
+                - if @user.avatar.weekly_average_mileage >= 20
+                  .avatar_parts
+                    = f.radio_button :tops, "slim", class: "hidden_button"
+                    = f.label :tops, value: "slim" do
+                      .parts_preview.tops_preview
+                        = render partial: "/avatar/tops/slim"
+                    
+                    = f.radio_button :tops, "tops1", class: "hidden_button"
+                    = f.label :tops, value: "tops1" do
+                      .parts_preview.tops_preview
+                        = render partial: "/avatar/tops/tops1"
+                    
+                    = f.radio_button :tops, "tops2", class: "hidden_button"
+                    = f.label :tops, value: "tops2" do
+                      .parts_preview.tops_preview
+                        = render partial: "/avatar/tops/tops2"
+                .btn-wrapper
+                  = f.radio_button :tops_color, "#e60012", class: "red"
+                  = f.radio_button :tops_color, "#fff100", class: "yellow"
+                  = f.radio_button :tops_color, "#008000", class: "green"
+                  = f.radio_button :tops_color, "#a0d8ef", class: "skyblue"
+                  = f.radio_button :tops_color, "#202020", class: "black"
+                  = f.radio_button :tops_color, "#ffffff", class: "white"
+                  .arrange-color
+                    調整
+                    = f.color_field :tops_color, id: "tops-color-field"
+                  = f.hidden_field :tops_color, id: "hidden-tops-color"
               -# ボトムス
-              .bottoms-tab bottoms
-              .avatar_parts
-                = f.radio_button :bottoms, "slim", class: "hidden_button"
-                = f.label :bottoms, value: "slim" do
-                  .parts_preview.bottoms_preview
-                    = render partial: "/avatar/bottoms/slim"
-                
-                = f.radio_button :bottoms, "bottoms1", class: "hidden_button"
-                = f.label :bottoms, value: "bottoms1" do
-                  .parts_preview.bottoms_preview
-                    = render partial: "/avatar/bottoms/bottoms1"
-                
-                = f.radio_button :bottoms, "bottoms2", class: "hidden_button"
-                = f.label :bottoms, value: "bottoms2" do
-                  .parts_preview.bottoms_preview
-                    = render partial: "/avatar/bottoms/bottoms2"
-                
-                = f.radio_button :bottoms, "bottoms3", class: "hidden_button"
-                = f.label :bottoms, value: "bottoms3" do
-                  .parts_preview.bottoms_preview
-                    = render partial: "/avatar/bottoms/bottoms3"
-              
-              .btn-wrapper
-                = f.radio_button :bottoms_color, "red", class: "red"
-                = f.radio_button :bottoms_color, "yellow", class: "yellow"
-                = f.radio_button :bottoms_color, "orange", class: "orange"
-                = f.radio_button :bottoms_color, "green", class: "green"
-                = f.radio_button :bottoms_color, "skyblue", class: "skyblue"
-                = f.radio_button :bottoms_color, "blue", class: "blue"
-                = f.radio_button :bottoms_color, "brown", class: "brown"
-                = f.radio_button :bottoms_color, "black", class: "black"
-                = f.radio_button :bottoms_color, "gray", class: "gray"
-                = f.radio_button :bottoms_color, "white", class: "white"
-              
-              .shoes-tab shoes
-              .btn-wrapper
-                = f.radio_button :shoes_color, "red", class: "red"
-                = f.radio_button :shoes_color, "yellow", class: "yellow"
-                = f.radio_button :shoes_color, "orange", class: "orange"
-                = f.radio_button :shoes_color, "green", class: "green"
-                = f.radio_button :shoes_color, "skyblue", class: "skyblue"
-                = f.radio_button :shoes_color, "blue", class: "blue"
-                = f.radio_button :shoes_color, "brown", class: "brown"
-                = f.radio_button :shoes_color, "black", class: "black"
-                = f.radio_button :shoes_color, "gray", class: "gray"
-                = f.radio_button :shoes_color, "white", class: "white"
-
+              .bottoms-tab.hidden-tab
+                bottoms
+              .select-parts
+                - if @user.avatar.weekly_average_mileage >= 20
+                  .avatar_parts
+                    = f.radio_button :bottoms, "slim", class: "hidden_button"
+                    = f.label :bottoms, value: "slim" do
+                      .parts_preview.bottoms_preview
+                        = render partial: "/avatar/bottoms/slim"
+                    
+                    = f.radio_button :bottoms, "bottoms1", class: "hidden_button"
+                    = f.label :bottoms, value: "bottoms1" do
+                      .parts_preview.bottoms_preview
+                        = render partial: "/avatar/bottoms/bottoms1"
+                    
+                    = f.radio_button :bottoms, "bottoms2", class: "hidden_button"
+                    = f.label :bottoms, value: "bottoms2" do
+                      .parts_preview.bottoms_preview
+                        = render partial: "/avatar/bottoms/bottoms2"
+                    
+                    = f.radio_button :bottoms, "bottoms3", class: "hidden_button"
+                    = f.label :bottoms, value: "bottoms3" do
+                      .parts_preview.bottoms_preview
+                        = render partial: "/avatar/bottoms/bottoms3"
+                  
+                .btn-wrapper
+                  = f.radio_button :bottoms_color, "#fff100", class: "yellow"
+                  = f.radio_button :bottoms_color, "#008000", class: "green"
+                  = f.radio_button :bottoms_color, "#0000ff", class: "blue"
+                  = f.radio_button :bottoms_color, "#202020", class: "black"
+                  = f.radio_button :bottoms_color, "#808080", class: "gray"
+                  = f.radio_button :bottoms_color, "#ffffff", class: "white"
+                  .arrange-color
+                    調整
+                    = f.color_field :bottoms_color, id: "bottoms-color-field"
+                  = f.hidden_field :bottoms_color, id: "hidden-bottoms-color"
+              .shoes-tab.hidden-tab
+                shoes
+              .select-parts
+                .btn-wrapper
+                  = f.radio_button :shoes_color, "#fff100", class: "yellow"
+                  = f.radio_button :shoes_color, "#0000ff", class: "blue"
+                  = f.radio_button :shoes_color, "#202020", class: "black"
+                  = f.radio_button :shoes_color, "#ffffff", class: "white"
+                  .arrange-color
+                    調整
+                    = f.color_field :shoes_color, id: "shoes-color-field"
+                  = f.hidden_field :shoes_color, id: "hidden-shoes-color"
     .user-post
       .actions
         = f.submit "編集する", class: "submit-button"

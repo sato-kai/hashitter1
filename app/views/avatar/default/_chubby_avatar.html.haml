@@ -2,11 +2,16 @@
 #face
   = render partial: "/avatar/face/chubby"
 .hair
-  #hair.mens-hair.black
-    = render partial: "/avatar/hair/mens_hair1"
-#tops.skyblue
-  = render partial: "/avatar/tops/chubby"
-#bottoms.gray
-  = render partial: "/avatar/bottoms/chubby"
-#shoes.blue
-  = render partial: "/avatar/shoes/shoes1"
+  %div{id: "hair", style: "fill: #{user.avatar.hair_color}"}
+    = render partial: "/avatar/hair/#{user.avatar.hair}"
+- if user.avatar.inner.present?
+  %div{id: "inner", style: "fill: #{user.avatar.inner_color}"}
+    = render partial: "/avatar/tops/#{user.avatar.inner}"
+.tops
+  %div{id: "tops", style: "fill: #{user.avatar.tops_color}"}
+    = render partial: "/avatar/tops/chubby"
+.bottoms
+  %div{id: "bottoms", style: "fill: #{user.avatar.bottoms_color}"}
+    = render partial: "/avatar/bottoms/chubby"
+%div{id: "shoes", style: "fill: #{user.avatar.shoes_color};"}
+  = render partial: "/avatar/shoes/#{user.avatar.shoes}"

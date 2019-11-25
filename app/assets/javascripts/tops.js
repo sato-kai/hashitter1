@@ -63,37 +63,29 @@ $(document).on("turbolinks:load",function(){
   }
 
   $('input[name="user[avatar_attributes][tops]"]:radio').change(function(){
-    console.log("OK")
     var topsStyle = $('input[name="user[avatar_attributes][tops]"]:checked').val();
-    console.log(topsStyle);
-    var color = $('input[name="user[avatar_attributes][tops_color]"]:checked').attr('class');
-    console.log(color);
+    var color = $('#tops-color-field').val();
     if (topsStyle == 'slim'){
       $('#tops').remove();
       appendSlimTops();
-      $('#tops').addClass(color);
+      $('#tops').css('fill', color)
     }else if (topsStyle == 'tops1'){
       $('#tops').remove();
       appendTops1();
-      $('#tops').addClass(color);
+      $('#tops').css('fill', color)
     }else {
       $('#tops').remove();
       appendTops2();
-      $('#tops').addClass(color);
+      $('#tops').css('fill', color)
     };
     
   });
 
-  $('input[name="user[avatar_attributes][tops_color]"]:radio').change(function(){
-    var color = this.className;
-    var topsStyle = $('input[name="user[avatar_attributes][tops_color]"]:checked').val();
-    if ($(topsStyle).length){
-    $('#tops').removeClass();
-    $('#tops').addClass(color);
-    }else {
-      $('#tops').removeClass();
-      $('#tops').addClass(color);
-    }
+  $('input[name="user[avatar_attributes][tops_color]"]').change(function(){
+    var color = $(this).val();
+    $('#tops').css('fill', color);
+    $('#hidden-tops-color').val(color);
+    $('#tops-color-field').val(color)
   });
 
 });

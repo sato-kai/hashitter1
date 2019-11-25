@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   
   before_action :set_user
+
   def show
     @new_tweet = Tweet.new
     @tweets = @user.tweets.order("created_at DESC").page(params[:page]).per(10)
@@ -8,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    
   end
 
   def update
@@ -32,4 +34,5 @@ class UsersController < ApplicationController
       :shoes, :shoes_color, :weekly_average_mileage, :user_id
     ])
   end
+
 end

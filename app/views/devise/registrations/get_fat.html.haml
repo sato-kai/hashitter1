@@ -1,0 +1,53 @@
+.get-fat
+  .get-fat__announce
+    .avatar-comment
+      あなたのアバターです
+    .avatar-comment
+      おや、少し体型が変わりましたか？
+    .avatar-comment
+      大変！あなたのアバターが太ってしまいました！
+  .get-fat__avatars
+    .avatar.large-avatar.slim-avatar
+      = render partial: "/avatar/default/slim_avatar", locals: { user: current_user }
+    .avatar.large-avatar.chubby-avatar
+      = render partial: "/avatar/default/chubby_avatar", locals: { user: current_user }
+    .avatar.large-avatar.fat-avatar
+      = render partial: "/avatar/default/fat_avatar", locals: { user: current_user }
+
+.sign-up-after-announce
+  .root-announce
+    .balloon1
+    .balloon2
+    .balloon3
+      ホームリンク
+  .mypage-announce
+    .balloon1
+    .balloon2
+    .balloon3
+      マイページリンク
+  .center-contents
+    .action-announce
+      .action-announce__text
+        走った距離を入力しよう！
+        .announce-detail
+          １週間の平均距離に応じてアバターの体型が変わります
+          %br/
+          痩せるとアバターに新しい服が着せられます
+          %br/
+          .action-btn
+            WORK
+            .btn-text
+              ボタンで入力できます
+      .action-announce__text
+        近況をつぶやこう！
+        .announce-detail
+          近況を画像付きで投稿できます
+          %br/
+          つぶやきはいいねやコメントができます
+          %br/
+          .action-btn
+            TWEET
+            .btn-text
+              ボタンで入力できます
+    = link_to root_path, class: "start-hashitter" do
+      Hashitterをはじめる

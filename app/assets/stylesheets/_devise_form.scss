@@ -27,6 +27,9 @@
         align-items: center;
         padding: 0 10px;
       }
+      #user_profile{
+        min-height: 100px;
+      }
     }
   }
   .avatar-wrapper{
@@ -50,6 +53,69 @@
   
 }
 
+.devise-submit{
+  height: 60px;
+  width: 120px;
+}
+.user-post{
+  .actions{
+    width: 120px;
+    margin: 0 auto;
+    .submit-button{
+      height: 60px;
+      line-height: 56px;
+      width: 100%;
+      background-color: #ffffff;
+      border: solid 2px #F1EAD7;
+      border-radius: 20px;
+      padding: 0 5px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #ad9570;
+      cursor: pointer;
+    }
+    .submit-button:hover{
+      border-color: #ad9570;
+      background-color: #ad9570;
+      color: #ffffff;
+    }
+  }
+}
+
+.hidden-tab{
+  font-size: 18px;
+  height: 50px;
+  line-height: 50px;
+  width: 100%;
+  cursor: pointer;
+}
+.hidden-tab:hover, .hovered{
+  font-size: 20px;
+  padding-left: 10px;
+  background-color: #ad9570;
+  color: #ffffff;
+}
+.select-parts{
+  padding-top: 10px;
+}
+
+
+@mixin colorSize{
+  height: 26px;
+  width: 26px;
+}
+#hair-color-field{
+  @include colorSize
+}
+#tops-color-field{
+  @include colorSize
+}
+#bottoms-color-field{
+  @include colorSize
+}
+#shoes-color-field{
+  @include colorSize
+}
 
 .actions{
   width: 100px;

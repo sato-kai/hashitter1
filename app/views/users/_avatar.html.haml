@@ -1,17 +1,16 @@
 #face
   = render partial: "/avatar/face/#{user.avatar.face}"
-.skin
-  = render partial: "/avatar/default/hand"
 .hair
-  %div{id: "hair", class: "mens-hair #{user.avatar.hair_color}"}
+  %div{id: "hair", style: "fill: #{user.avatar.hair_color}"}
     = render partial: "/avatar/hair/#{user.avatar.hair}"
-#inner.yellow
-  = render partial: "/avatar/tops/inner1"
+- if user.avatar.inner.present?
+  %div{id: "inner", style: "fill: #{user.avatar.inner_color}"}
+    = render partial: "/avatar/tops/inner1"
 .tops
-  %div{id: "tops", class: "#{user.avatar.tops_color}"}
+  %div{id: "tops", style: "fill: #{user.avatar.tops_color}"}
     = render partial: "/avatar/tops/#{user.avatar.tops}"
 .bottoms
-  %div{id: "bottoms", class: "#{user.avatar.bottoms_color}"}
+  %div{id: "bottoms", style: "fill: #{user.avatar.bottoms_color}"}
     = render partial: "/avatar/bottoms/#{user.avatar.bottoms}"
-%div{id: "shoes", class: "#{user.avatar.shoes_color}"}
+%div{id: "shoes", style: "fill: #{user.avatar.shoes_color};"}
   = render partial: "/avatar/shoes/#{user.avatar.shoes}"

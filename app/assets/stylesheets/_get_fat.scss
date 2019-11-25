@@ -1,0 +1,136 @@
+.get-fat{
+  width: 100%;
+  height: calc(100vh - 220px);
+  &__announce{
+    height: 30px;
+    font-size: 24px;
+    text-align: center;
+    padding: 20px 0;
+  }
+}
+
+.sign-up-after-announce{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  .root-announce{
+    position: absolute;
+    top: 70px;
+    left: 100px;
+    z-index: 100;
+    .balloon1{
+      height: 20px;
+      width: 20px;
+      background-color: #ad9570;
+      border-radius: 50%;
+    }
+    .balloon2{
+      height: 25px;
+      width: 25px;
+      background-color: #ad9570;
+      border-radius: 50px;
+      margin: 10px;
+    }
+    .balloon3{
+      height: 50px;
+      width: 120px;
+      background-color: #ad9570;
+      border-radius: 50px;
+      margin: 10px 0 0 10px;
+      line-height: 50px;
+      font-weight: bold;
+      text-align: center;
+      color: #ffffff;
+    }
+  }
+  
+  .mypage-announce{
+    position: absolute;
+    top: 70px;
+    right: 100px;
+    z-index: 100;
+    .balloon1{
+      height: 20px;
+      width: 20px;
+      background-color: #ad9570;
+      border-radius: 50%;
+      margin-left: auto;
+    }
+    .balloon2{
+      height: 25px;
+      width: 25px;
+      background-color: #ad9570;
+      border-radius: 50px;
+      margin: 10px 0 0 110px;
+    }
+    .balloon3{
+      height: 50px;
+      width: 140px;
+      background-color: #ad9570;
+      border-radius: 50px;
+      margin: 10px 0 0 10px;
+      line-height: 50px;
+      font-weight: bold;
+      text-align: center;
+      color: #ffffff;
+    }
+  }
+  .center-contents{
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+    .action-announce{
+      height: 300px;
+      width: 500px;
+      background-color: rgba(255, 255, 255, 0.5);
+      margin: 0 auto;
+      border: solid 3px #F1EAD7;;
+      text-align: center;
+      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      &__text{
+        font-size: 24px;
+        padding: 0 20px;
+        .announce-detail{
+          text-align: left;
+          font-size: 18px;
+          line-height: 30px;
+          .action-btn{
+            background-color: #F1EAD7;
+            .btn-text{
+              display: inline;
+            }
+          }
+        }
+        .tweet-announce{
+          text-align: left;
+          font-size: 18px;
+          line-height: 30px;
+        }
+  
+      }
+    }
+    .start-hashitter{
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 60px;
+      width: 300px;
+      margin: 20px auto;
+      padding: 20px 0;
+      background-color: #ad9570;
+      text-align: center;
+      color: #ffffff;
+      line-height: 20px;
+      font-weight: bold;
+      font-size: 24px;
+      border-radius: 60px;
+    }
+  }
+}
+

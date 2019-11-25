@@ -2,12 +2,22 @@
   width: 300px;
   margin: 20px auto;
   background-color: #ffffff;
+  &__announce{
+    text-align: center;
+    padding-top: 20px;
+  }
   .radio-buttons{
     padding: 20px;
     .btn-wrapper{
       display: flex;
       justify-content: space-between;
+      align-items: flex-end;
       padding: 20px 0;
+      .arrange-color{
+        width: 60px;
+        text-align: center;
+        margin-bottom: -2px;
+      }
     }
   }
 }
@@ -20,10 +30,9 @@ input[type=radio] {
   appearance: none;
   position: relative;
   right: 0;
-  bottom: 10px;
   left: 0;
-  height: 20px;
-  width: 20px;
+  height: 26px;
+  width: 26px;
   vertical-align: -0.8rem;
   transition:all .15s ease-out 0s;
   color: #fff;
@@ -35,18 +44,14 @@ input[type=radio] {
 
 
 // ラジオボタン
-input[type=radio] {
-  border-radius: 50%;
-}
 input[type=radio]:checked:before {
   transform: scale(1);
 }
 input[type=radio]:before {
   content: "";
   display: block;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
+  width: 20px;
+  height: 20px;
   margin: -1px;
   transform: scale(0);
   transition: all ease-out 250ms;
@@ -128,5 +133,5 @@ input[type=radio].white {
   padding: 2px;
   width: 10px;
   height: 10px;
-  margin: 1px;
+  margin: 4px;
 }

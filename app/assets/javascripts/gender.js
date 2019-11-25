@@ -20,15 +20,19 @@ $(document).on("turbolinks:load",function(){
   }
   $('input[name="user[gender]"]:radio').change(function(){
     var getGender = $('input[name="user[gender]"]:checked').val();
-    var color = $('input[name="user[avatar_attributes][hair_color]"]:checked').attr('class');
+    var color = $('#hair-color-field').val();
     if (getGender == '男性'){
       $('#hair').remove();
       appendMensHair1();
-      $('#hair').addClass(color);
+      $('#hair').css('fill', color)
+      $('#user_avatar_attributes_hair_mens_hair1').prop('checked', true);
     }else {
       $('#hair').remove();
       appendLadiesHair1();
-      $('#hair').addClass(color);
+      $('#hair').css('fill', color)
+      $('#user_avatar_attributes_hair_ladies_hair1').prop('checked', true);
     }
+    $('input[name="user[avatar_attributes][hair]"]:checked').next().css('fill', 'black')
+    $('input[name="user[avatar_attributes][hair]"]:not(:checked)').next().css('fill', 'white')
   })
 });
