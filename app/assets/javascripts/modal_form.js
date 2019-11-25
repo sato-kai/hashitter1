@@ -48,12 +48,6 @@ $(document).on("turbolinks:load",function(){
       $('.modal').fadeOut();
       return false;
   });
-  $(".modal-tooltip").hide();
-  $(".image-icon").hover(function(){
-    $(this).next(".modal-tooltip").fadeIn("fast");
-  }, function(){
-    $(this).next(".modal-tooltip").fadeOut("fast");
-  });
   // comment新規投稿
   $('.js-modal-comment-open').on('click',function(){
     $('.js-modal-comment').fadeIn();
@@ -68,5 +62,46 @@ $(document).on("turbolinks:load",function(){
     $(this).next(".modal-tooltip").fadeIn("fast");
   }, function(){
     $(this).next(".modal-tooltip").fadeOut("fast");
+  });
+  // work入力
+  $('.js-modal-work-open').on('click',function(){
+    $('.js-modal-work').fadeIn();
+    return false;
+  });
+  $('.js-modal-work-close').on('click',function(){
+      $('.js-modal-work').fadeOut();
+      return false;
+  });
+  $('.works-new-btn').on('click',function(e){
+    newWorkLink = $(this).attr('href');
+    getId = $(this).attr('id');
+    e.preventDefault();
+    $.ajax({
+      url: newWorkLink,
+      type: 'GET',
+    })
+    location.reload();
+    return false;
+  });
+  // ログアウト
+  $('.js-modal-logout').on('click',function(){
+    logoutId = $(this).attr('href');
+    $('.js-modal-logout').fadeIn();
+    return false;
+  });
+  $('.modal-submit').on('click', '#logout-button', function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    $.ajax({
+      url: logoutId,
+      type: 'POST',
+      data: {"_method": "DELETE"} ,
+    })
+    location.reload();
+    return false;
+  });
+  $('.js-modal-close').on('click',function(){
+      $('.modal').fadeOut();
+      return false;
   });
 });

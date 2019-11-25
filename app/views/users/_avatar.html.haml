@@ -3,6 +3,9 @@
 .hair
   %div{id: "hair", style: "fill: #{user.avatar.hair_color}"}
     = render partial: "/avatar/hair/#{user.avatar.hair}"
+- unless user.avatar.tops == 'fat' or user.avatar.tops == 'chubby'
+  .skin
+    = render partial: "/avatar/default/hand"
 - if user.avatar.inner.present?
   %div{id: "inner", style: "fill: #{user.avatar.inner_color}"}
     = render partial: "/avatar/tops/inner1"

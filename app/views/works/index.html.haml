@@ -1,0 +1,91 @@
+.main-content
+  .user-content
+    .user-content__left
+      .big-avatar-circle
+        .big-avatar
+          .avatar
+            = render partial: "/users/avatar", locals: {user: current_user}
+    .user-content__right
+      %table.user-box
+        %tr.user-box__line
+          %td.inline
+            名前
+          %td.inline
+            = current_user.name
+        %tr.user-box__line
+          %td.inline
+            総走行距離
+          %td.inline
+            = @total_distance
+            km
+        %tr.user-box__line
+          %td.inline
+            今週の平均
+          %td.inline
+            = @weekly_average
+            km
+        - if @weekly_average < 10
+          %tr.user-box__line
+            %td.inline
+              次痩せるまで
+            %td.inline
+              あと
+              = @to_chubby
+              km
+        - if @weekly_average < 20
+          %tr.user-box__line
+            %td.inline
+              理想の体型まで
+            %td.inline
+              あと
+              = @to_slim
+              km
+      .user-btn
+        - if @work.nil?
+          .user-edit
+            = link_to new_user_work_path(current_user), id: current_user.id, class: "user-edit__button works-new-btn", method: :post, remote: true do
+              今日の走行距離を入力しますか？
+        - else
+          .user-edit
+            .user-edit__button.js-modal-work-open
+              走行距離を入力する
+        - if @weekly_average >= 20
+          .user-edit
+            = link_to edit_user_path(current_user), class: "user-edit__button" do
+              ユーザーを編集する
+
+  %h3.main-content__title
+    直近１週間の走行データ
+  .chart-field
+    .chart-field__text
+
+    = column_chart @weekly_data, class: "column-chart"
+
+
+- if @work.present?
+  .modal.js-modal-work
+    .modal__bg.js-modal-work-close
+    .modal__content
+      = icon "fas", "times", class: "js-modal-work-close"
+      .modal-form
+        .modal-form__title
+          今日の走行距離
+          %span
+          %input{type: "number", value: @work.run, id: "today-run", readonly: true}
+          %span
+          km
+      .form
+        = form_with(url: save_distance_user_work_path(current_user, @work), local:true, method: :patch) do |f|
+          .work-form
+            距離を追加する
+            = f.number_field :run, placeholder: "今日走った距離を入力しよう！", id: "add-run", class: "text-field"
+            km
+          .work-form
+            距離を編集する
+            = f.number_field :run, value: @work.run, placeholder: "今日走った距離を入力しよう！", id: "edit-run", class: "text-field"
+            km
+            = f.hidden_field :run, id: "hidden-work"
+          .lower-form
+            .actions
+              = f.submit "入力する", class: "submit-button"
+= render partial: "/side_bar"

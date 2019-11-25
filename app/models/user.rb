@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :likes, dependent: :destroy
   has_many :like_tweets, through: :likes, source: :tweet
+  has_many :works
 
   enum prefecture: {
     "北海道": 1, "青森県": 2, "岩手県": 3, "宮城県": 4, "秋田県": 5, "山形県": 6, "福島県": 7,

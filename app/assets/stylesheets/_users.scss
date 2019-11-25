@@ -23,6 +23,11 @@
     }
   }
 }
+
+.user-btn{
+  display: flex;
+  justify-content: space-around;
+}
 .user-edit{
   display: flex;
   justify-content: center;
@@ -45,3 +50,4 @@
   color: #ffffff;
   }
 }
+

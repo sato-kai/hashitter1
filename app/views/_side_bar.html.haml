@@ -34,13 +34,21 @@
     distanceランキング
   .content
     = icon "fas", "crown", class: "ranking"
-    .content__box
-      .small-avatar
-      .content__box__post
-        .upper-post
-          .user-name
-            hoge@fuga
-        .lower-post
-          週平均走行距離
-          .weekly_average_mileage
-            ５km
+    - @work_ranking.each.with_index(1) do |work, i|
+      = link_to user_path(work.user) do
+        No.
+        = i
+        .content__box
+          .avatar-circle
+            .mini-avatar
+              .avatar
+                = render partial: "/users/avatar", locals: {user: work.user}
+          .content__box__post
+            .upper-post
+              .user-name
+                = work.user.name
+            .lower-post
+              週平均走行距離
+              .weekly_average_mileage
+                = work.user.avatar.weekly_average_mileage
+                km

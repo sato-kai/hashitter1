@@ -1,0 +1,38 @@
+#today-run{
+  border: none;
+  width: 50px;
+  margin-left: 10px;
+}
+#today-run:focus{
+  outline: 0;
+}
+.work-form{
+  width: 330px;
+  margin: 10px auto 0;
+}
+#add-run{
+  width: 300px;
+  margin: 0 auto;
+}
+#edit-run{
+  width: 300px;
+}
+
+
+
+
+.column-chart{
+  margin: 0 auto;
+  pad: 30px;
+}
+#chart-1{
+  margin: 0 auto;
+}
+.chart-field{
+  padding: 20px;
+  width: 100%;
+  background-color: #ffffff;
+  &__text{
+    
+  }
+}

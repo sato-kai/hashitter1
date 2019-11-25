@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @new_tweet = Tweet.new
     @tweets = @user.tweets.order("created_at DESC").page(params[:page]).per(10)
     @tweet_ranking = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) DESC').limit(3).pluck(:tweet_id))
+    @work_ranking = Avatar.order('weekly_average_mileage DESC').limit(3)
   end
 
   def edit

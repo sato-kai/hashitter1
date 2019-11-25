@@ -6,6 +6,7 @@ class TweetsController < ApplicationController
     @tweets = Tweet.includes(:user).order("created_at DESC").page(params[:page]).per(10)
     @new_tweet = Tweet.new
     @tweet_ranking = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) DESC').limit(3).pluck(:tweet_id))
+    @work_ranking = Avatar.order('weekly_average_mileage DESC').limit(3)
   end
 
   def create
@@ -24,6 +25,7 @@ class TweetsController < ApplicationController
     @comment = Comment.new
     @comments = @tweet.comments.includes(:user)
     @tweet_ranking = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) DESC').limit(3).pluck(:tweet_id))
+    @work_ranking = Avatar.order('weekly_average_mileage DESC').limit(3)
   end
 
   def update
