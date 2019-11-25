@@ -83,3 +83,4 @@ gem 'devise-i18n-views'
 gem 'fog-aws'
 gem 'chartkick'
 gem 'groupdate'
+gem 'whenever', require: false

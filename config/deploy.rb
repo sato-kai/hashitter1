@@ -25,6 +25,8 @@ set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }
 set :keep_releases, 5
 
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
+
 #secrets.ymlではリリースバージョン間でシンボリックリンクにして共有
 #credentials.yml.encではmasterkeyにする（今回）
 set :linked_files, %w{config/master.key}
