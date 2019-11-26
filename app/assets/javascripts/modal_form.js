@@ -89,15 +89,14 @@ $(document).on("turbolinks:load",function(){
     $('.js-modal-logout').fadeIn();
     return false;
   });
-  $('.modal-submit').on('click', '#logout-button', function(e){
+  $('#logout-submit').on('click', '#logout-button', function(e){
     e.preventDefault();
-    e.stopPropagation();
     $.ajax({
       url: logoutId,
       type: 'POST',
       data: {"_method": "DELETE"},
     })
-    location.reload();
+    window.location.href = "/";
     return false;
   });
   $('.js-modal-close').on('click',function(){
