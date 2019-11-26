@@ -124,6 +124,10 @@
                   = f.radio_button :tops_color, "#0000ff", class: "blue"
                   = f.radio_button :tops_color, "#202020", class: "black"
                   = f.radio_button :tops_color, "#ffffff", class: "white"
+                  .arrange-color
+                    調整
+                    = f.color_field :tops_color, id: "tops-color-field"
+                  = f.hidden_field :tops_color, id: "hidden-tops-color"
               -# ボトムス
               .bottoms-tab.hidden-tab
                 bottoms
@@ -135,6 +139,10 @@
                   = f.radio_button :bottoms_color, "#202020", class: "black"
                   = f.radio_button :bottoms_color, "#808080", class: "gray"
                   = f.radio_button :bottoms_color, "#ffffff", class: "white"
+                  .arrange-color
+                    調整
+                    = f.color_field :bottoms_color, id: "bottoms-color-field"
+                  = f.hidden_field :bottoms_color, id: "hidden-bottoms-color"
               -# 靴
               .shoes-tab.hidden-tab
                 shoes
@@ -144,6 +152,10 @@
                   = f.radio_button :shoes_color, "#0000ff", class: "blue"
                   = f.radio_button :shoes_color, "#202020", class: "black"
                   = f.radio_button :shoes_color, "#ffffff", class: "white"
+                  .arrange-color
+                    調整
+                    = f.color_field :shoes_color, id: "shoes-color-field"
+                  = f.hidden_field :shoes_color, id: "hidden-shoes-color"
 
     .user-post
       .actions
