@@ -61,6 +61,7 @@
           .color-select
             .color-select__announce
               編集する部分をクリックしてください
+            = f.hidden_field :face, id: "hidden-tops"
             .radio-buttons
               -# 髪型
               .hair-tab.hidden-tab
@@ -180,6 +181,7 @@
                     調整
                     = f.color_field :shoes_color, id: "shoes-color-field"
                   = f.hidden_field :shoes_color, id: "hidden-shoes-color"
+            = f.hidden_field :weekly_average_mileage
     .user-post
       .actions
         = f.submit "編集する", class: "submit-button"

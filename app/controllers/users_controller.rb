@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   
   before_action :set_user
+  before_action :move_to_sign_in, only: :edit
 
   def show
     @new_tweet = Tweet.new
@@ -10,7 +11,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    
   end
 
   def update
@@ -18,6 +18,9 @@ class UsersController < ApplicationController
       @user.update(user_params)
       redirect_to action: :show
       flash[:notice] = "ユーザーを編集しました"
+    else
+      redirect_to root_path
+      flash[:notice] = "編集する権限がありません"
     end
   end
 
@@ -34,6 +37,10 @@ class UsersController < ApplicationController
       :bottoms, :bottoms_color, :spats, :spats_color,
       :shoes, :shoes_color, :weekly_average_mileage, :user_id
     ])
+  end
+
+  def move_to_sign_in
+    redirect_to new_user_session_path unless user_signed_in? or current_user.id = params[:id]
   end
 
 end

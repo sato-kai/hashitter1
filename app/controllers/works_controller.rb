@@ -2,6 +2,7 @@ class WorksController < ApplicationController
   
   before_action :set_work, except: :change_body_style
   before_action :weekly_average, except: :change_body_style
+  before_action :weekly_data, only: :index
 
   def index
     @new_tweet = Tweet.new
@@ -9,8 +10,6 @@ class WorksController < ApplicationController
     @to_slim = 140 - @weekly_total
     @to_chubby = 70 - @weekly_total
     @work_ranking = Avatar.order('weekly_average_mileage DESC').limit(3)
-    @weekly_data = @week_data.order('created_at ASC').pluck(:created_at, :run).map{|c, r| [Date.parse(c.to_s), r]}
-    
   end
 
   def new
@@ -71,10 +70,22 @@ class WorksController < ApplicationController
   def weekly_average
     @user_work= Work.where(user_id: current_user.id)
     @total_distance = @user_work.sum(:run)
-    today = Time.now.at_end_of_day
-    a_week_ago = (today - 6.day).at_beginning_of_day
-    @week_data = @user_work.where(created_at: a_week_ago...today)
-    @weekly_total = @user_work.where(created_at: a_week_ago...today).sum(:run)
+    today_end = Time.now.at_end_of_day
+    week_start = (today_end - 6.day).at_beginning_of_day
+    @week_data = @user_work.where(created_at: week_start...today_end)
+    @weekly_total = @user_work.where(created_at: week_start...today_end).sum(:run)
     @weekly_average = (@weekly_total / 7).round(2)
   end
+
+  def weekly_data
+    @weekly_data = @week_data.order('created_at ASC').pluck(:created_at, :run).map{|c, r| [Date.parse(c.to_s), r]}
+    today = Date.today
+    a_week_ago = today - 6
+    @week = []
+    (a_week_ago..today).each do |date|
+      @week << [date, 0]
+    end
+    @adata = @week.concat(@weekly_data)
+  end
+
 end

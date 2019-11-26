@@ -59,7 +59,7 @@
   .chart-field
     .chart-field__text
 
-    = column_chart @weekly_data, class: "column-chart"
+    = column_chart @adata, class: "column-chart"
 
 
 - if @work.present?
@@ -84,7 +84,7 @@
             距離を編集する
             = f.number_field :run, value: @work.run, placeholder: "今日走った距離を入力しよう！", id: "edit-run", class: "text-field"
             km
-            = f.hidden_field :run, id: "hidden-work"
+            = f.hidden_field :run, value: @work.run, id: "hidden-work"
           .lower-form
             .actions
               = f.submit "入力する", class: "submit-button"
