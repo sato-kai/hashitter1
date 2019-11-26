@@ -91,13 +91,15 @@ $(document).on("turbolinks:load",function(){
   });
   $('#logout-submit').on('click', '#logout-button', function(e){
     e.preventDefault();
+    e.stopPropagation();
     $.ajax({
       url: logoutId,
       type: 'POST',
       data: {"_method": "DELETE"},
     })
-    window.location.href = "/";
-    return false;
+    setTimeout(function(){
+      location.reload();
+    },100);
   });
   $('.js-modal-close').on('click',function(){
       $('.modal').fadeOut();
