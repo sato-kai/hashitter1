@@ -1,5 +1,6 @@
 class WorksController < ApplicationController
   
+  before_action :move_to_sign_in, only: :index
   before_action :set_work, except: :change_body_style
   before_action :weekly_average, except: :change_body_style
   before_action :weekly_data, only: :index
@@ -86,6 +87,10 @@ class WorksController < ApplicationController
       @week << [date, 0]
     end
     @adata = @week.concat(@weekly_data)
+  end
+
+  def move_to_sign_in
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
 end
