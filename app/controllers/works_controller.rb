@@ -48,7 +48,7 @@ class WorksController < ApplicationController
     weekly_average
     current_user.avatar.update(weekly_average_mileage: @weekly_average)
     if @weekly_average >= 20
-      current_user.avatar.update(face: "slim", tops: "slim", bottoms: "slim")
+      current_user.avatar.update(face: "slim", tops: "slim", inner: "inner1", bottoms: "slim")
       flash[:notice] = "やったね理想の体型！"
     elsif @weekly_average < 20 && @weekly_average >= 10
       current_user.avatar.update(face: "chubby", tops: "chubby", bottoms: "chubby")

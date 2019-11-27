@@ -17,7 +17,6 @@
 .large-avatar{
   width: 300px;
   margin: 20px auto;
-  background-color: #ffffff;
 }
 .avatar-circle{
   width: 60px;
@@ -51,13 +50,19 @@
   .skin{
     @include parts
   }
-  #hair{
+  .hair{
     @include parts
   }
   #inner{
     @include parts
   }
-  .tops{
+  #parker{
+    @include parts
+  }
+  #line{
+    @include parts
+  }
+.tops{
     @include parts
   }
   #bottoms{
@@ -94,6 +99,18 @@
   .tops_preview{
     height: 60px;
     width: 60px;
+  }
+  .inner_preview{
+    height: 60px;
+    width: 60px;
+  }
+  .parts_nothing{
+    height: 40px;
+    line-height: 40px;
+    width: 40px;
+    text-align: center;
+    border: solid 1px #000000;
+    margin-top: 30px;
   }
   .bottoms_preview{
     height: 60px;

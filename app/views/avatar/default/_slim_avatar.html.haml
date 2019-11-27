@@ -3,8 +3,8 @@
   = render partial: "/avatar/face/slim"
 .skin
   = render partial: "/avatar/default/hand"
-.hair
-  %div{id: "hair", style: "fill: #{user.avatar.hair_color}"}
+#hair
+  %div{class: "hair", style: "fill: #{user.avatar.hair_color}"}
     = render partial: "/avatar/hair/#{user.avatar.hair}"
 - if user.avatar.inner.present?
   %div{id: "inner", style: "fill: #{user.avatar.inner_color}"}

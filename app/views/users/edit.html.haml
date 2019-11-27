@@ -132,6 +132,34 @@
                     調整
                     = f.color_field :tops_color, id: "tops-color-field"
                   = f.hidden_field :tops_color, id: "hidden-tops-color"
+              -# インナー
+              .inner-tab.hidden-tab
+                inner
+              .select-parts
+                - if @user.avatar.weekly_average_mileage >= 20
+                  .avatar_parts
+                    = f.radio_button :inner, "", class: "hidden_button"
+                    = f.label :inner, value: "" do
+                      .parts_preview.inner_preview
+                        .parts_nothing
+                          なし
+                    
+                    = f.radio_button :inner, "inner1", class: "hidden_button"
+                    = f.label :inner, value: "inner1" do
+                      .parts_preview.inner_preview
+                        = render partial: "/avatar/tops/inner1"
+                    
+                .btn-wrapper
+                  = f.radio_button :inner_color, "#e60012", class: "red"
+                  = f.radio_button :inner_color, "#fff100", class: "yellow"
+                  = f.radio_button :inner_color, "#008000", class: "green"
+                  = f.radio_button :inner_color, "#a0d8ef", class: "skyblue"
+                  = f.radio_button :inner_color, "#202020", class: "black"
+                  = f.radio_button :inner_color, "#ffffff", class: "white"
+                  .arrange-color
+                    調整
+                    = f.color_field :inner_color, value: "#fff100", id: "inner-color-field"
+                  = f.hidden_field :inner_color, id: "hidden-inner-color"
               -# ボトムス
               .bottoms-tab.hidden-tab
                 bottoms

@@ -1,14 +1,15 @@
 #face
   = render partial: "/avatar/face/#{user.avatar.face}"
-.hair
-  %div{id: "hair", style: "fill: #{user.avatar.hair_color}"}
+#hair
+  %div{class: "hair", style: "fill: #{user.avatar.hair_color}"}
     = render partial: "/avatar/hair/#{user.avatar.hair}"
-- unless user.avatar.tops == 'fat' or user.avatar.tops == 'chubby'
-  .skin
+.skin
+  - unless user.avatar.tops == 'fat' or user.avatar.tops == 'chubby'
     = render partial: "/avatar/default/hand"
-- if user.avatar.inner.present?
-  %div{id: "inner", style: "fill: #{user.avatar.inner_color}"}
-    = render partial: "/avatar/tops/inner1"
+.inner
+  - if user.avatar.inner.present?
+    %div{id: "inner", style: "fill: #{user.avatar.inner_color}"}
+      = render partial: "/avatar/tops/#{user.avatar.inner}"
 .tops
   %div{id: "tops", style: "fill: #{user.avatar.tops_color}"}
     = render partial: "/avatar/tops/#{user.avatar.tops}"
@@ -17,3 +18,7 @@
     = render partial: "/avatar/bottoms/#{user.avatar.bottoms}"
 %div{id: "shoes", style: "fill: #{user.avatar.shoes_color};"}
   = render partial: "/avatar/shoes/#{user.avatar.shoes}"
+#front-hair
+  - if user.avatar.hair == "ladies_hair3"
+    %div{class: "hair", style: "fill: #{user.avatar.hair_color}"}
+      = render partial: "/avatar/hair/ladies_hair3_front"

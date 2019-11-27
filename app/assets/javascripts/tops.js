@@ -24,11 +24,11 @@ $(document).on("turbolinks:load",function(){
                         <path d="m73.025 204.4v39.688"></path>
                         <path d="m74.083 180.58c5.2917 10.583 21.167 2.6458 31.75 2.6458 10.583 1e-5 26.458 7.9375 31.75-2.6458" fill="none"></path>
                       </g>
-                      <div class='black' id='line'>
+                      <div id='line'>
                         <svg version="1.1" viewBox="0 0 210 297" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg">
                           <path d="m74.612 212.33 10.583 10.583-10.583 21.167"></path>
                           <path d="m136 212.33-10.583 10.583 10.583 21.167"></path>
-                          <path d="m105.83 206.51v45.508" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+                          <path xmlns="http://www.w3.org/2000/svg" d="m105.83 183.23v68.792" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
                         </svg>
                       </div>
                     </svg>
