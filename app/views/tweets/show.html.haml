@@ -30,7 +30,7 @@
                 = comment.created_at.strftime("%Y/%m/%d %H:%M")
             .lower-post
               .tweet
-                = comment.text
+                = simple_format(comment.text)
     - else
       .content__box
         このtweetにコメントしよう！　

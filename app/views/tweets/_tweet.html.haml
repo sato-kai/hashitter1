@@ -6,7 +6,7 @@
       = tweet.created_at.strftime("%Y/%m/%d %H:%M")
   .lower-post
     .tweet
-      = tweet.text
+      = simple_format(tweet.text)
     - if tweet.image.present?
       = image_tag "#{tweet.image}", class: "image"
     .check-lists

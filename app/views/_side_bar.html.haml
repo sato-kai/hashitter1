@@ -19,8 +19,8 @@
               .user-name
                 = tweet.user.name
             .lower-post
-              .tweet
-                = tweet.text
+              .tweet.side-tweet
+                = simple_format(tweet.text)
               .check-lists
                 .button-list
                   .iine__button
