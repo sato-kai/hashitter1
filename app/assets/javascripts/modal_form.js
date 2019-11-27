@@ -99,7 +99,7 @@ $(document).on("turbolinks:load",function(){
     })
     setTimeout(function(){
       location.reload();
-    },100);
+    },300);
   });
   $('.js-modal-close').on('click',function(){
       $('.modal').fadeOut();
