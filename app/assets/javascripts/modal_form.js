@@ -35,9 +35,7 @@ $(document).on("turbolinks:load",function(){
     $('.js-modal-destroy-tweet').fadeIn();
     return false;
   });
-  $('.modal-submit').on('click', '#delete-button', function(e){
-    e.preventDefault();
-    e.stopPropagation();
+  $('.modal-submit').on('click', '#delete-button', function(){
     $.ajax({
       url: destroyId,
       type: 'POST',
@@ -89,9 +87,7 @@ $(document).on("turbolinks:load",function(){
     $('.js-modal-logout').fadeIn();
     return false;
   });
-  $('#logout-submit').on('click', '#logout-button', function(e){
-    e.preventDefault();
-    e.stopPropagation();
+  $('#logout-submit').on('click', '#logout-button', function(){
     $.ajax({
       url: logoutId,
       type: 'POST',
