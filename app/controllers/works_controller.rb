@@ -86,7 +86,7 @@ class WorksController < ApplicationController
     (a_week_ago..today).each do |date|
       @week << [date, 0]
     end
-    @adata = @week.concat(@weekly_data)
+    @chart_data = @week.concat(@weekly_data)
   end
 
   def move_to_sign_in
