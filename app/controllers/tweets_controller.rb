@@ -30,12 +30,16 @@ class TweetsController < ApplicationController
 
   def update
     if @tweet.user_id == current_user.id
-      @tweet.update(tweet_params)
-      redirect_to root_path
-      flash[:notice] = "tweetを編集しました"
+      if @tweet.update(tweet_params)
+        redirect_to root_path
+        flash[:notice] = "tweetを編集しました"
+      else
+        render :show
+        flash.now[:notice] = "tweetを編集できませんでした"
+      end
     else
       redirect_to root_path
-      flash[:notice] = "tweetを編集できませんでした"
+      flash[:notice] = "編集する権限がありません"
     end
   end
 
