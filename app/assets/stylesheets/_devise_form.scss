@@ -11,6 +11,7 @@
 .field-wrapper{
   display: flex;
   justify-content: space-between;
+  height: calc(100vh - 80px);
   .user-field{
     width: 33%;
     .field{
