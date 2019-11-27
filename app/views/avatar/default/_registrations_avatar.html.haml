@@ -1,14 +1,17 @@
 -# 登録用アバター
 #face
   = render partial: "/avatar/face/slim"
-.skin
-  = render partial: "/avatar/default/hand"
 #hair
   %div{class: "hair", style: "fill: black;"}
     = render partial: "/avatar/hair/mens_hair1"
-%div{id: "tops", style: "fill: skyblue;"}
-  = render partial: "/avatar/tops/slim"
-%div{id: "bottoms", style: "fill: gray;"}
-  = render partial: "/avatar/bottoms/slim"
+.skin
+  = render partial: "/avatar/default/hand"
+.tops
+  %div{id: "tops", style: "fill: skyblue;"}
+    = render partial: "/avatar/tops/slim"
+.bottoms
+  %div{id: "bottoms", style: "fill: gray;"}
+    = render partial: "/avatar/bottoms/slim"
 %div{id: "shoes", style: "fill: blue;"}
   = render partial: "/avatar/shoes/shoes1"
+#front-hair
