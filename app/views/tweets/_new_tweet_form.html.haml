@@ -1,0 +1,21 @@
+.modal.modal-new-tweet
+  .modal__bg.js-modal-close
+  .modal__content
+    = icon "fas", "times", class: "js-modal-close"
+    .modal-form
+      .modal-form__title
+        つぶやき
+      = form_with(model: @new_tweet, url: "/tweets", local: true, id: "new_tweet") do |f|
+        .error-messages
+        .tweet-form
+          = f.text_area :text, placeholder: "今何してる？", class: "text-field tweet-field"
+        .preview-area.new-tweet-image
+        .lower-form
+          = f.label :image, class: "image-label" do
+            = f.file_field :image, class: "hidden-form new-image-btn"
+            = icon "far", "image", class: "image-icon"
+            .modal-tooltip
+              画像投稿
+              .modal-balloon
+          .actions.modal-submit
+            = f.submit "送信", class: "submit-button new-tweet-submit", id: "tweet-submit"

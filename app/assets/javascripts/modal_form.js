@@ -1,33 +1,26 @@
 $(document).on("turbolinks:load",function(){
-  // tweet新規投稿
-  $('.js-modal-new-tweet-open').on('click',function(){
-    $('.js-modal-new-tweet').fadeIn();
-    return false;
-  });
-  $('.js-modal-close').on('click',function(){
-      $('.modal').fadeOut();
-      return false;
-  });
-  $(".modal-tooltip").hide();
-  $(".image-icon").hover(function(){
-    $(this).next(".modal-tooltip").fadeIn("fast");
-  }, function(){
-    $(this).next(".modal-tooltip").fadeOut("fast");
-  });
+  // tweet新規投稿はtweets/new.js.erbに記載
+
+  // 送信ボタンを押した時にバリデーションチェック
+  $(document).on('submit', function(e){
+    if ($('.tweet-field').val() == '' && $('.hidden-form').val() == ''){
+      e.preventDefault();
+      $('.error-messages').append("テキストまたは画像を入力してください")
+    }
+  })
+  // バリデーション解除
+  $(document).on('keyup', function(){
+    $('#tweet-submit').prop('disabled', false)
+    $('.error-messages').empty();
+  })
+
   // tweet編集
   $('.js-modal-edit-tweet-open').on('click',function(){
     $('.js-modal-edit-tweet').fadeIn();
-    return false;
-  });
-  $('.js-modal-close').on('click',function(){
-      $('.modal').fadeOut();
-      return false;
-  });
-  $(".modal-tooltip").hide();
-  $(".image-icon").hover(function(){
-    $(this).next(".modal-tooltip").fadeIn("fast");
-  }, function(){
-    $(this).next(".modal-tooltip").fadeOut("fast");
+    if ($('.image').length){
+      $('.image-label').hide();
+      $('.modal-submit').css('margin', 'auto')
+    }
   });
   // tweet削除
   $('.js-modal-destroy-tweet-open').on('click',function(){
@@ -42,33 +35,15 @@ $(document).on("turbolinks:load",function(){
       data: {"_method": "DELETE"} ,
     })
   });
-  $('.js-modal-close').on('click',function(){
-      $('.modal').fadeOut();
-      return false;
-  });
   // comment新規投稿
   $('.js-modal-comment-open').on('click',function(){
     $('.js-modal-comment').fadeIn();
     return false;
   });
-  $('.js-modal-comment-close').on('click',function(){
-      $('.js-modal-comment').fadeOut();
-      return false;
-  });
-  $(".modal-tooltip").hide();
-  $(".image-icon").hover(function(){
-    $(this).next(".modal-tooltip").fadeIn("fast");
-  }, function(){
-    $(this).next(".modal-tooltip").fadeOut("fast");
-  });
   // work入力
   $('.js-modal-work-open').on('click',function(){
     $('.js-modal-work').fadeIn();
     return false;
-  });
-  $('.js-modal-work-close').on('click',function(){
-      $('.js-modal-work').fadeOut();
-      return false;
   });
   $('.works-new-btn').on('click',function(e){
     newWorkLink = $(this).attr('href');
@@ -97,8 +72,23 @@ $(document).on("turbolinks:load",function(){
       location.reload();
     },300);
   });
+
+  // モーダルの黒い部分または×マークが押された時
   $('.js-modal-close').on('click',function(){
-      $('.modal').fadeOut();
-      return false;
+    $('.modal').fadeOut();
+    return false;
+  });
+  // 新規投稿モーダルフェードアウト
+  $(document).on('click', '.js-modal-close', function(){
+    $('.modal-new-tweet').fadeOut(function(){
+      $('.modal-new-tweet').remove();
+    });
+  })
+  // 画像ボタン
+  $(".modal-tooltip").hide();
+  $(".image-icon").hover(function(){
+    $(this).next(".modal-tooltip").fadeIn("fast");
+  }, function(){
+    $(this).next(".modal-tooltip").fadeOut("fast");
   });
 });
