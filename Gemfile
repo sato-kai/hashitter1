@@ -84,3 +84,4 @@ gem 'fog-aws'
 gem 'chartkick'
 gem 'groupdate'
 gem 'whenever', require: false
+gem 'rails-i18n'

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :tweets do
+  resources :tweets , only: [:index, :new, :create, :show, :update, :destroy] do
     resources :comments, only: [:create]
   end
   post '/like/:tweet_id' => 'likes#like', as: 'like'
