@@ -11,6 +11,26 @@ a{
   color: #ad9570;
 }
 
+input{
+  border-radius: 10px;
+}
+
+textarea{
+  border-radius: 10px;
+}
+
+input:focus{
+  border: solid 3px #ad9570;
+  border-radius: 10px;
+  outline: 0;
+}
+
+textarea:focus{
+  border: solid 3px #ad9570;
+  border-radius: 10px;
+  outline: 0;
+}
+
 .header{
   height: 80px;
   width: 100vw;
@@ -69,32 +89,6 @@ a{
   left: 0;
   right: 0;
   z-index: 100;
-}
-
-.modal{
-  display: none;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-}
-.modal__bg{
-  background: rgba(0,0,0,0.8);
-  height: 100vh;
-  position: absolute;
-  width: 100%;
-}
-.modal__content{
-  background: #fff;
-  left: 50%;
-  padding: 40px;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%,-50%);
-  width: 40%;
-  z-index: 1200;
 }
 
 .wrapper-contents{
