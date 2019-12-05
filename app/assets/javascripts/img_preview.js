@@ -4,6 +4,7 @@ $(document).on("turbolinks:load", function(){
     var reader = new FileReader();
     if(file.type.indexOf("image") < 0){
       $('.error-messages').append("画像ファイルを指定してください");
+      $('.image-label').show();
       return false;
     }
     $('.error-messages').empty();
