@@ -11,12 +11,12 @@
           = f.label :名前
           %span.red ＊
           %br/
-          = f.text_field :name, autofocus: true, autocomplete: "name", class: "input-field"
+          = f.text_field :name, autofocus: true, autocomplete: "name", value: @user.name, class: "input-field"
         .field
           = f.label :email
           %span.red ＊
           %br/
-          = f.email_field :email, autofocus: true, autocomplete: "email", class: "input-field"
+          = f.email_field :email, autofocus: true, autocomplete: "email", value: @user.email, class: "input-field"
         .field
           = f.label :住所
           %br/
