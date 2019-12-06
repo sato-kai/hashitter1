@@ -8,8 +8,8 @@ class WorksController < ApplicationController
   def index
     @new_tweet = Tweet.new
     @tweet_ranking = Tweet.find(Like.group(:tweet_id).order('count(tweet_id) DESC').limit(3).pluck(:tweet_id))
-    @to_slim = 140 - @weekly_total
-    @to_chubby = 70 - @weekly_total
+    @to_slim = 21 - @weekly_total
+    @to_chubby = 14 - @weekly_total
     @work_ranking = Avatar.order('weekly_average_mileage DESC').limit(3)
   end
 
@@ -47,10 +47,10 @@ class WorksController < ApplicationController
   def change_body_style
     weekly_average
     current_user.avatar.update(weekly_average_mileage: @weekly_average)
-    if @weekly_average >= 20
+    if @weekly_average >= 3
       current_user.avatar.update(face: "slim", tops: "slim", inner: "inner1", bottoms: "slim")
       flash[:notice] = "やったね理想の体型！"
-    elsif @weekly_average < 20 && @weekly_average >= 10
+    elsif @weekly_average < 3 && @weekly_average >= 2
       current_user.avatar.update(face: "chubby", tops: "chubby", bottoms: "chubby")
       flash[:notice] = "その調子！少し痩せたよ！"
     else
@@ -79,14 +79,14 @@ class WorksController < ApplicationController
   end
 
   def weekly_data
-    @weekly_data = @week_data.order('created_at ASC').pluck(:created_at, :run).map{|c, r| [Date.parse(c.to_s), r]}
+    weekly_data = @week_data.order('created_at ASC').pluck(:created_at, :run).map{|c, r| [Date.parse(c.to_s), r]}
     today = Date.today
     a_week_ago = today - 6
-    @week = []
+    week = []
     (a_week_ago..today).each do |date|
-      @week << [date, 0]
+      week << [date, 0]
     end
-    @chart_data = @week.concat(@weekly_data)
+    @chart_data = week.concat(weekly_data)
   end
 
   def move_to_sign_in

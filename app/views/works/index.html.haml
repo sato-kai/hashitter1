@@ -24,7 +24,7 @@
           %td.inline
             = @weekly_average
             km
-        - if @weekly_average < 10
+        - if @weekly_average < 2
           %tr.user-box__line
             %td.inline
               次痩せるまで
@@ -32,7 +32,7 @@
               あと
               = @to_chubby
               km
-        - if @weekly_average < 20
+        - if @weekly_average < 3
           %tr.user-box__line
             %td.inline
               理想の体型まで
@@ -66,7 +66,7 @@
   .modal.js-modal-work
     .modal__bg.js-modal-close
     .modal__content
-      = icon "fas", "times", class: "js-modal-work-close"
+      = icon "fas", "times", class: "js-modal-close"
       .modal-form
         .modal-form__title
           今日の走行距離
@@ -75,17 +75,18 @@
           %span
           km
       .form
-        = form_with(url: save_distance_user_work_path(current_user, @work), local:true, method: :patch) do |f|
+        = form_with(url: save_distance_user_work_path(current_user, @work), local:true, method: :patch, id: "run-field") do |f|
+          .error-messages
           .work-form
             距離を追加する
-            = f.number_field :run, placeholder: "今日走った距離を入力しよう！", id: "add-run", class: "text-field"
+            = f.number_field :run, placeholder: "今日走った距離を入力しよう！", autofocus: true, id: "add-run", class: "text-field"
             km
           .work-form
             距離を編集する
-            = f.number_field :run, value: @work.run, placeholder: "今日走った距離を入力しよう！", id: "edit-run", class: "text-field"
+            = f.number_field :run, value: @work.run, placeholder: "今日走った距離を入力しよう！", autofocus: true, id: "edit-run", class: "text-field"
             km
             = f.hidden_field :run, value: @work.run, id: "hidden-work"
           .lower-form
             .actions
-              = f.submit "入力する", class: "submit-button"
+              = f.submit "入力する", class: "submit-button", id: "work-submit"
 = render partial: "/side_bar"
