@@ -11,6 +11,12 @@
       = image_tag "#{tweet.image}", class: "image"
     .check-lists
       - if user_signed_in?
+        - if controller_name == "tweets" && action_name == "show"
+          .button-list.js-modal-comment-open
+            .tooltipt
+              コメント
+              .tooltip-balloon
+            = icon "far", "comment"
         - if current_user.id == tweet.user_id
           - if controller_name == "tweets" && action_name == "show"
             .button-list.js-modal-edit-tweet-open
@@ -18,11 +24,6 @@
                 編集する
                 .tooltip-balloon
               = icon "fas", "edit"
-            .button-list.js-modal-comment-open
-              .tooltipt
-                コメント
-                .tooltip-balloon
-              = icon "far", "comment"
           .button-list.js-modal-destroy-tweet-open
             .tooltipt
               削除する

@@ -39,31 +39,32 @@
         　ボタンからコメントできるよ！
 
 -# tweetモーダル（編集）
-.modal.js-modal-edit-tweet
-  .modal__bg.js-modal-close
-  .modal__content
-    = icon "fas", "times", class: "js-modal-close"
-    .modal-form
-      .modal-form__title
-        つぶやきを編集
-      = form_with(model: @tweet, local: true) do |f|
-        .error-messages
-        .tweet-form
-          = f.text_area :text, placeholder: "今何してる？", class: "text-field tweet-field"
-        .preview-area.edit-tweet-image
-          - if @tweet.image?
-            = image_tag "#{@tweet.image}", id: "edit-image_preview"
-            = icon "fas", "times", class: "image-delete"
-        .lower-form
-          = f.label :image, class: "image-label" do
-            = f.file_field :image, class: "hidden-form edit-image"
-            = icon "far", "image", class: "image-icon"
-            .modal-tooltip
-              画像投稿
-              .modal-balloon
-          = f.check_box :remove_image, style: "display:none"
-          .actions.modal-submit
-            = f.submit "保存", class: "submit-button edit-tweet-submit", id: "tweet-submit"
+- if current_user.id == @tweet.user_id
+  .modal.js-modal-edit-tweet
+    .modal__bg.js-modal-close
+    .modal__content
+      = icon "fas", "times", class: "js-modal-close"
+      .modal-form
+        .modal-form__title
+          つぶやきを編集
+        = form_with(model: @tweet, local: true) do |f|
+          .error-messages
+          .tweet-form
+            = f.text_area :text, placeholder: "今何してる？", class: "text-field tweet-field"
+          .preview-area.edit-tweet-image
+            - if @tweet.image?
+              = image_tag "#{@tweet.image}", id: "edit-image_preview"
+              = icon "fas", "times", class: "image-delete"
+          .lower-form
+            = f.label :image, class: "image-label" do
+              = f.file_field :image, class: "hidden-form edit-image"
+              = icon "far", "image", class: "image-icon"
+              .modal-tooltip
+                画像投稿
+                .modal-balloon
+            = f.check_box :remove_image, style: "display:none"
+            .actions.modal-submit
+              = f.submit "保存", class: "submit-button edit-tweet-submit", id: "tweet-submit"
 
 -# commentモーダル
 - if current_user
