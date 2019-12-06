@@ -12,6 +12,7 @@ $(document).on("turbolinks:load",function(){
   $(document).on('keyup', function(){
     $('#tweet-submit').prop('disabled', false)
     $('#comment-submit').prop('disabled', false)
+    $('#work-submit').prop('disabled', false)
     $('.error-messages').empty();
   })
 
@@ -63,6 +64,7 @@ $(document).on("turbolinks:load",function(){
     location.reload();
     return false;
   });
+
   // ログアウト
   $('.js-modal-logout').on('click',function(){
     logoutId = $(this).attr('href');
