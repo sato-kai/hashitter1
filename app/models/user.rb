@@ -28,4 +28,9 @@ class User < ApplicationRecord
   enum age: {
     "10代": 1, "20代": 2, "30代": 3, "40代": 4, "50代": 5, "60代": 6, "70代": 7, "80歳以上": 8
   }
+
+  VALID_EMAIL_REGEX =   /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :name, presence: true
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
+  validates :password, presence: true
 end
