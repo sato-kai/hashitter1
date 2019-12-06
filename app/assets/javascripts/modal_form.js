@@ -11,6 +11,7 @@ $(document).on("turbolinks:load",function(){
   // バリデーション解除
   $(document).on('keyup', function(){
     $('#tweet-submit').prop('disabled', false)
+    $('#comment-submit').prop('disabled', false)
     $('.error-messages').empty();
   })
 
@@ -40,6 +41,12 @@ $(document).on("turbolinks:load",function(){
     $('.js-modal-comment').fadeIn();
     return false;
   });
+  $('#new_comment').on('submit', function(e){
+    if ($('.comment-field').val() == ''){
+      e.preventDefault();
+      $('.error-messages').append("コメントを入力してください")
+    }
+  })
   // work入力
   $('.js-modal-work-open').on('click',function(){
     $('.js-modal-work').fadeIn();

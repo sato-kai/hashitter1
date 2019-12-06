@@ -76,11 +76,12 @@
         .modal-form__title
           コメント
       .form
-        = form_with(model: [@tweet, @comment], local: true) do |f|
+        = form_with(model: [@tweet, @comment], local: true, id: "new_comment") do |f|
+          .error-messages
           .tweet-form
-            = f.text_area :text, placeholder: "コメントしよう！", class: "text-field"
+            = f.text_area :text, placeholder: "コメントしよう！", class: "text-field comment-field"
           .lower-form
             .actions
-              = f.submit "コメント", class: "submit-button"
+              = f.submit "コメント", class: "submit-button", id: "comment-submit"
 
 = render partial: "/side_bar"
