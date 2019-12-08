@@ -5,7 +5,8 @@ $(document).on("turbolinks:load",function(){
   $(document).on('submit', function(e){
     if ($('.tweet-field').val() == '' && $('.hidden-form').val() == ''){
       e.preventDefault();
-      $('.error-messages').append("テキストまたは画像を入力してください")
+      $('.new-msg').append("テキストまたは画像を入力してください")
+      $('.edit-msg').append("テキストまたは画像を入力してください")
     }
   })
   // バリデーション解除
@@ -51,17 +52,6 @@ $(document).on("turbolinks:load",function(){
   // work入力
   $('.js-modal-work-open').on('click',function(){
     $('.js-modal-work').fadeIn();
-    return false;
-  });
-  $('.works-new-btn').on('click',function(e){
-    newWorkLink = $(this).attr('href');
-    getId = $(this).attr('id');
-    e.preventDefault();
-    $.ajax({
-      url: newWorkLink,
-      type: 'GET',
-    })
-    location.reload();
     return false;
   });
 

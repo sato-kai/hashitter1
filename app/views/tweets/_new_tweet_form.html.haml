@@ -6,7 +6,7 @@
       .modal-form__title
         つぶやき
       = form_with(model: @new_tweet, url: "/tweets", local: true, id: "new_tweet") do |f|
-        .error-messages
+        .error-messages.new-msg
         .tweet-form
           = f.text_area :text, placeholder: "今何してる？", class: "text-field tweet-field"
         .preview-area.new-tweet-image
