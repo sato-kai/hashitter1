@@ -13,25 +13,14 @@ class WorksController < ApplicationController
     @work_ranking = Avatar.order('weekly_average_mileage DESC').limit(3)
   end
 
-  def new
+
+  def set_distance
     if @work.nil?
-      work = Work.new
-      set_distance(work)
-      redirect_to root_path
-      flash[:notice] = "頑張って走ろう！"
-    else
-      redirect_to root_path
+      work = Work.new(user_id: current_user.id, run: 0)
+      if work.save
+        redirect_to action: :index
+      end
     end
-  end
-
-  def set_distance(work)
-    work.user_id = current_user.id
-    work.run = 0
-    work.save
-    return
-  end
-
-  def input_distance
   end
 
   def save_distance

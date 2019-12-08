@@ -1,0 +1,14 @@
+.user-btn
+  - if @work.nil?
+    .user-edit
+      = link_to set_distance_path(current_user), method: :post, remote: true do
+        .user-edit__button
+          今日は走りましたか？
+  - else
+    .user-edit
+      .user-edit__button.js-modal-work-open
+        走行距離を入力する
+  - if @weekly_average >= 3
+    .user-edit
+      = link_to edit_user_path(current_user), class: "user-edit__button" do
+        ユーザーを編集する

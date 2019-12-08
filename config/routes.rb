@@ -8,11 +8,10 @@ Rails.application.routes.draw do
     get '/users/get_fat' => 'users/registrations#get_fat'
   end
   root 'tweets#index'
+  post '/users/:user_id/works' => 'works#set_distance', as: 'set_distance'
   resources :users, only: [:show, :edit, :update] do
-    resources :works, only: [:index, :new] do
+    resources :works, only: [:index] do
       member do
-        post 'set_distance'
-        get 'input_distance'
         patch 'save_distance'
       end
     end

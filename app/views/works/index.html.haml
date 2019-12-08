@@ -40,19 +40,7 @@
               あと
               = @to_slim
               km
-      .user-btn
-        - if @work.nil?
-          .user-edit
-            = link_to new_user_work_path(current_user), id: current_user.id, class: "user-edit__button works-new-btn", method: :post, remote: true do
-              今日の走行距離を入力しますか？
-        - else
-          .user-edit
-            .user-edit__button.js-modal-work-open
-              走行距離を入力する
-        - if @weekly_average >= 20
-          .user-edit
-            = link_to edit_user_path(current_user), class: "user-edit__button" do
-              ユーザーを編集する
+      = render partial: "works/input"
 
   %h3.main-content__title
     直近１週間の走行データ
