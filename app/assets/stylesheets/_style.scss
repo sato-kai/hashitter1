@@ -58,3 +58,14 @@ $sp: 480px;  // スマホ
   @include sp {
   };
 }
+
+.user-content{
+  @include pc {
+  };
+  @include tab {
+    flex-direction: column;
+  };
+  @include sp {
+    flex-direction: column;
+  };
+}

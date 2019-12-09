@@ -3,8 +3,10 @@
   padding-bottom: 20px;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   &__left{
     width: 40%;
+    margin-bottom: 20px;
   }
   &__right{
     width: 60%;
@@ -14,6 +16,7 @@
     .user-box{
       border: solid 2px #ad9570;
       text-align: center;
+      margin-bottom: 20px;
       &__line{
         border: solid 1px #ad9570;
         .inline{
@@ -31,6 +34,7 @@
 .user-edit{
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
   &__button{
     height: 40px;
     line-height: 36px;
