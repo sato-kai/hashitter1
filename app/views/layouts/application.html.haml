@@ -26,47 +26,50 @@
                     = render partial: "/users/avatar", locals: {user: current_user}
         - else
           .header__right__menu
+            = link_to "WORK", new_user_session_path, class: "list"
+            = link_to "TWEET", new_user_session_path, class: "list"
             = link_to "ログイン", new_user_session_path, class: "list"
             = link_to "新規登録", new_user_registration_path, class: "list"
-    
+
     -# フラッシュ
     - if flash[:notice]
       .flash-notice
         = flash[:notice]
     
-    -# tweetモーダル（新規投稿）
-    #new-tweet-form
+    - if user_signed_in?
+      -# tweetモーダル（新規投稿）
+      #new-tweet-form
+      -# tweetモーダル（削除）
+      .modal.js-modal-destroy-tweet
+        .modal__bg.js-modal-close
+        .modal__content
+          = icon "fas", "times", class: "js-modal-close"
+          .modal-form
+            .modal-form__title
+              本当に削除しますか？
+              .destroy-buttons
+                .js-modal-close.actions.modal-submit
+                  .submit-button
+                    やめる
+                .actions.modal-submit
+                  #delete-button.submit-button
+                    削除
+      -# ログアウトモーダル
+      .modal.js-modal-logout
+        .modal__bg.js-modal-close
+        .modal__content
+          = icon "fas", "times", class: "js-modal-close"
+          .modal-form
+            .modal-form__title
+              ログアウトしますか？
+              .destroy-buttons
+                .js-modal-close.actions.modal-submit
+                  .submit-button
+                    いいえ
+                .actions.modal-submit#logout-submit
+                  #logout-button.submit-button
+                    はい
 
-    -# tweetモーダル（削除）
-    .modal.js-modal-destroy-tweet
-      .modal__bg.js-modal-close
-      .modal__content
-        = icon "fas", "times", class: "js-modal-close"
-        .modal-form
-          .modal-form__title
-            本当に削除しますか？
-            .destroy-buttons
-              .js-modal-close.actions.modal-submit
-                .submit-button
-                  やめる
-              .actions.modal-submit
-                #delete-button.submit-button
-                  削除
-    -# ログアウトモーダル
-    .modal.js-modal-logout
-      .modal__bg.js-modal-close
-      .modal__content
-        = icon "fas", "times", class: "js-modal-close"
-        .modal-form
-          .modal-form__title
-            ログアウトしますか？
-            .destroy-buttons
-              .js-modal-close.actions.modal-submit
-                .submit-button
-                  いいえ
-              .actions.modal-submit#logout-submit
-                #logout-button.submit-button
-                  はい
     -# 全体を囲うスタイル
     .wrapper-contents
       .contents
