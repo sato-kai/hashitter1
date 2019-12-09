@@ -66,4 +66,15 @@
               .avatar
                 = render partial: "/users/avatar", locals: {user: like.tweet.user}
           = render partial: "/tweets/tweet", locals: {tweet: like.tweet}
-= render partial: "/side_bar"
+
+-# サイドバー
+.side-bar
+  = render partial: "/side_bar"
+-# サイドバー（レスポンシブ用）
+.side-responsive
+  .circle.rank-circle
+    = icon "fas", "crown", class: "rank-icon"
+  .times-circle.circle
+    = icon "fas", "times", class: "times-icon"
+  .side-accordion
+    = render partial: "/side_bar"

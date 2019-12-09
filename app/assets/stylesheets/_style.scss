@@ -1,0 +1,60 @@
+$pc: 1024px; // PC
+$tab: 680px; // タブレット
+$sp: 480px;  // スマホ
+
+@mixin pc {
+  @media (min-width: ($pc)) {
+    @content;
+  }
+}
+@mixin tab {
+  @media (min-width: ($tab)) and (max-width: ($pc)){
+    @content;
+  }
+}
+@mixin sp {
+  @media (min-width: ($sp)) and (max-width: ($tab)) {
+    @content;
+  }
+}
+
+.main-content{
+  @include pc {
+    width: 70%;
+  };
+  @include tab {
+    width: 100%;
+  };
+  @include sp {
+  };
+}
+.side-bar{
+  @include pc {
+  };
+  @include tab {
+    display: none;
+  };
+  @include sp {
+    display: none;
+  };
+}
+
+
+.circle{
+  @include pc {
+    display: none;
+  };
+  @include tab {
+  };
+  @include sp {
+  };
+}
+.side-responsive{
+  @include pc {
+    display: none;
+  };
+  @include tab {
+  };
+  @include sp {
+  };
+}

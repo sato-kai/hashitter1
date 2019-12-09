@@ -13,4 +13,15 @@
                 = render partial: "/users/avatar", locals: {user: tweet.user}
           = render partial: "tweet", locals: {tweet: tweet}
     = paginate @tweets
-= render partial: "/side_bar"
+
+-# サイドバー
+.side-bar
+  = render partial: "/side_bar"
+-# サイドバー（レスポンシブ用）
+.side-responsive
+  .circle.rank-circle
+    = icon "fas", "crown", class: "rank-icon"
+  .times-circle.circle
+    = icon "fas", "times", class: "times-icon"
+  .side-accordion
+    = render partial: "/side_bar"

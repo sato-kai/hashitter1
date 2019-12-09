@@ -84,4 +84,14 @@
             .actions
               = f.submit "コメント", class: "submit-button", id: "comment-submit"
 
-= render partial: "/side_bar"
+-# サイドバー
+.side-bar
+  = render partial: "/side_bar"
+-# サイドバー（レスポンシブ用）
+.side-responsive
+  .circle.rank-circle
+    = icon "fas", "crown", class: "rank-icon"
+  .times-circle.circle
+    = icon "fas", "times", class: "times-icon"
+  .side-accordion
+    = render partial: "/side_bar"
