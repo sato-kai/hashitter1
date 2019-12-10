@@ -11,9 +11,7 @@
 .field-wrapper{
   display: flex;
   justify-content: space-between;
-  height: calc(100vh - 80px);
   .user-field{
-    width: 33%;
     .field{
       width: 300px;
       margin: 0 auto 10px;
@@ -32,16 +30,9 @@
       }
     }
   }
-  .avatar-wrapper{
-    width: 33%;
-  }
-  .avatar-field{
-    width: 33%;
-  }
   .login-field{
     width: 100%;
   }
-  
 }
 
 .form-announce{
@@ -50,7 +41,42 @@
   margin: 20px auto;
   border: solid 2px #ad9570;
   border-radius: 10px;
-  
+}
+
+.dress-up{
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-left: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: solid 2px #f1ead7;
+  background-color: #ffffff;
+  text-align: center;
+  z-index: 1500;
+  &--icon{
+    color: #ffb62f;
+    font-size: 30px;
+    line-height: 46px;
+  }
+  &--msg{
+    font-size: 11px;
+  }
+}
+.dress-up-close{
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-left: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: solid 2px #f1ead7;
+  background-color: #ffffff;
+  text-align: center;
+  z-index: 1500;
 }
 
 .devise-submit{

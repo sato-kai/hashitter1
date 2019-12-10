@@ -12,4 +12,16 @@ $(document).on("turbolinks:load",function(){
     $(this).fadeOut();
     $('.rank-circle').fadeIn();
   })
+
+  $('.dress-up').on('click', function(){
+    $('.avatar-field').show();
+    $('.avatar-field').animate({'right': '50%'}, 300);
+    $(this).fadeOut();
+    $('.dress-up-close').fadeIn();
+  })
+  $('.dress-up-close').on('click', function(){
+    $('.avatar-field').animate({'right': '100%'}, 300);
+    $(this).fadeOut();
+    $('.dress-up').fadeIn();
+  })
 });

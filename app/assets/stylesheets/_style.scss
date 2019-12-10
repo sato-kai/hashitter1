@@ -49,7 +49,18 @@ $sp: 480px;  // スマホ
   @include sp {
   };
 }
+
 .side-responsive{
+  @include pc {
+    display: none;
+  };
+  @include tab {
+  };
+  @include sp {
+  };
+}
+
+.avatar-responsive{
   @include pc {
     display: none;
   };
@@ -69,3 +80,61 @@ $sp: 480px;  // スマホ
     flex-direction: column;
   };
 }
+
+.field-wrapper{
+  .user-field{
+    @include pc {
+      width: 33%;
+    };
+    @include tab {
+      width: 50%;
+    };
+    @include sp {
+      // width: 50%;
+    };
+  }
+  .avatar-image{
+    @include pc {
+      width: 33%;
+    };
+    @include tab {
+      width: 50%;
+    };
+    @include sp {
+      // width: 50%;
+    };
+  }
+  .avatar-form{
+    @include pc {
+      width: 33%;
+    };
+    @include tab {
+      
+    };
+    @include sp {
+      display: none;
+      width: 50%;
+    };
+    .avatar-field{
+      @include pc {
+        display: block;
+      };
+      @include tab {
+        display: block;
+        position: absolute;
+        top: 240px;
+        right: 100%;
+        background-color: #ffffff;
+        border: solid 5px #ad9570;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: rgba(0, 0, 0, 0.5) -5px 5px 5px;
+        margin: 0;
+        z-index: 1000;
+      };
+      @include sp {
+      };
+    }
+  }
+}
+

@@ -53,7 +53,7 @@
           %br/
           = f.text_area :profile, class: "input-field"
       
-      .avatar-wrapper
+      .avatar-image
         .form-announce
           あなたのアバターです
           %br/
@@ -62,100 +62,109 @@
           ランニングの習慣化で健康な毎日を！
         .avatar.large-avatar
           = render partial: "/avatar/default/registrations_avatar"
-      
-      .avatar-field
-        .form-announce
-          スタイルとカラーが選べます
-          %br/
-          ランニングを続けると
-          %br/
-          新しい服が選べるようになります
-        = f.fields_for :avatar, class: "avatar_form" do |f|
-          .color-select
-            .color-select__announce
-              編集する部分をクリックしてください
-            .radio-buttons
-              -# 髪型
-              .hair-tab.hidden-tab
-                hair
-              .select-parts
-                .avatar_parts
-                  = f.radio_button :hair, "mens_hair1", class: "black hidden_button"
-                  = f.label :hair, value: "mens_hair1" do
-                    .parts_preview
-                      = render partial: "/avatar/hair/mens_hair1"
-                  = f.radio_button :hair, "mens_hair2", class: "black hidden_button"
-                  = f.label :hair, value: "mens_hair2" do
-                    .parts_preview
-                      = render partial: "/avatar/hair/mens_hair2"
-                  = f.radio_button :hair, "mens_hair3", class: "black hidden_button"
-                  = f.label :hair, value: "mens_hair3" do
-                    .parts_preview
-                      = render partial: "/avatar/hair/mens_hair3"
-                  = f.radio_button :hair, "ladies_hair1", class: "black hidden_button"
-                  = f.label :hair, value: "ladies_hair1" do
-                    .parts_preview
-                      = render partial: "/avatar/hair/ladies_hair1"
-                  = f.radio_button :hair, "ladies_hair2", class: "black hidden_button"
-                  = f.label :hair, value: "ladies_hair2" do
-                    .parts_preview
-                      = render partial: "/avatar/hair/ladies_hair2"
-                  = f.radio_button :hair, "ladies_hair3", class: "black hidden_button"
-                  = f.label :hair, value: "ladies_hair3" do
-                    .parts_preview
-                      = render partial: "/avatar/hair/ladies_hair3"
-                .btn-wrapper
-                  = f.radio_button :hair_color, "#202020", class: "black"
-                  = f.radio_button :hair_color, "#4f2702", class: "brown"
-                  = f.radio_button :hair_color, "#808080", class: "gray"
-                  = f.radio_button :hair_color, "#fff100", class: "yellow"
-                  .arrange-color
-                    調整
-                    = f.color_field :hair_color, id: "hair-color-field"
-                  = f.hidden_field :hair_color, id: "hidden-hair-color"
-              -# トップス
-              .tops-tab.hidden-tab
-                tops
-              .select-parts
-                .btn-wrapper
-                  = f.radio_button :tops_color, "#e60012", class: "red"
-                  = f.radio_button :tops_color, "#fff100", class: "yellow"
-                  = f.radio_button :tops_color, "#008000", class: "green"
-                  = f.radio_button :tops_color, "#a0d8ef", class: "skyblue"
-                  = f.radio_button :tops_color, "#202020", class: "black"
-                  = f.radio_button :tops_color, "#ffffff", class: "white"
-                  .arrange-color
-                    調整
-                    = f.color_field :tops_color, id: "tops-color-field"
-                  = f.hidden_field :tops_color, id: "hidden-tops-color"
-              -# ボトムス
-              .bottoms-tab.hidden-tab
-                bottoms
-              .select-parts
-                .btn-wrapper
-                  = f.radio_button :bottoms_color, "#fff100", class: "yellow"
-                  = f.radio_button :bottoms_color, "#008000", class: "green"
-                  = f.radio_button :bottoms_color, "#0000ff", class: "blue"
-                  = f.radio_button :bottoms_color, "#202020", class: "black"
-                  = f.radio_button :bottoms_color, "#808080", class: "gray"
-                  = f.radio_button :bottoms_color, "#ffffff", class: "white"
-                  .arrange-color
-                    調整
-                    = f.color_field :bottoms_color, id: "bottoms-color-field"
-                  = f.hidden_field :bottoms_color, id: "hidden-bottoms-color"
-              -# 靴
-              .shoes-tab.hidden-tab
-                shoes
-              .select-parts
-                .btn-wrapper
-                  = f.radio_button :shoes_color, "#fff100", class: "yellow"
-                  = f.radio_button :shoes_color, "#0000ff", class: "blue"
-                  = f.radio_button :shoes_color, "#202020", class: "black"
-                  = f.radio_button :shoes_color, "#ffffff", class: "white"
-                  .arrange-color
-                    調整
-                    = f.color_field :shoes_color, id: "shoes-color-field"
-                  = f.hidden_field :shoes_color, id: "hidden-shoes-color"
+          .avatar-responsive
+            .dress-up.circle
+              = icon "fas", "tshirt", class: "dress-up--icon"
+              .dress-up--msg
+                着せ替え
+            .dress-up-close.circle
+              = icon "fas", "times", class: "times-icon"
+              .dress-up--msg
+                閉じる
+      .avatar-form
+        .avatar-field
+          .form-announce
+            スタイルとカラーが選べます
+            %br/
+            ランニングを続けると
+            %br/
+            新しい服が選べるようになります
+          = f.fields_for :avatar, class: "avatar_form" do |f|
+            .color-select
+              .color-select__announce
+                編集する部分をクリックしてください
+              .radio-buttons
+                -# 髪型
+                .hair-tab.hidden-tab
+                  hair
+                .select-parts
+                  .avatar_parts
+                    = f.radio_button :hair, "mens_hair1", class: "black hidden_button"
+                    = f.label :hair, value: "mens_hair1" do
+                      .parts_preview
+                        = render partial: "/avatar/hair/mens_hair1"
+                    = f.radio_button :hair, "mens_hair2", class: "black hidden_button"
+                    = f.label :hair, value: "mens_hair2" do
+                      .parts_preview
+                        = render partial: "/avatar/hair/mens_hair2"
+                    = f.radio_button :hair, "mens_hair3", class: "black hidden_button"
+                    = f.label :hair, value: "mens_hair3" do
+                      .parts_preview
+                        = render partial: "/avatar/hair/mens_hair3"
+                    = f.radio_button :hair, "ladies_hair1", class: "black hidden_button"
+                    = f.label :hair, value: "ladies_hair1" do
+                      .parts_preview
+                        = render partial: "/avatar/hair/ladies_hair1"
+                    = f.radio_button :hair, "ladies_hair2", class: "black hidden_button"
+                    = f.label :hair, value: "ladies_hair2" do
+                      .parts_preview
+                        = render partial: "/avatar/hair/ladies_hair2"
+                    = f.radio_button :hair, "ladies_hair3", class: "black hidden_button"
+                    = f.label :hair, value: "ladies_hair3" do
+                      .parts_preview
+                        = render partial: "/avatar/hair/ladies_hair3"
+                  .btn-wrapper
+                    = f.radio_button :hair_color, "#202020", class: "black"
+                    = f.radio_button :hair_color, "#4f2702", class: "brown"
+                    = f.radio_button :hair_color, "#808080", class: "gray"
+                    = f.radio_button :hair_color, "#fff100", class: "yellow"
+                    .arrange-color
+                      調整
+                      = f.color_field :hair_color, id: "hair-color-field"
+                    = f.hidden_field :hair_color, id: "hidden-hair-color"
+                -# トップス
+                .tops-tab.hidden-tab
+                  tops
+                .select-parts
+                  .btn-wrapper
+                    = f.radio_button :tops_color, "#e60012", class: "red"
+                    = f.radio_button :tops_color, "#fff100", class: "yellow"
+                    = f.radio_button :tops_color, "#008000", class: "green"
+                    = f.radio_button :tops_color, "#a0d8ef", class: "skyblue"
+                    = f.radio_button :tops_color, "#202020", class: "black"
+                    = f.radio_button :tops_color, "#ffffff", class: "white"
+                    .arrange-color
+                      調整
+                      = f.color_field :tops_color, id: "tops-color-field"
+                    = f.hidden_field :tops_color, id: "hidden-tops-color"
+                -# ボトムス
+                .bottoms-tab.hidden-tab
+                  bottoms
+                .select-parts
+                  .btn-wrapper
+                    = f.radio_button :bottoms_color, "#fff100", class: "yellow"
+                    = f.radio_button :bottoms_color, "#008000", class: "green"
+                    = f.radio_button :bottoms_color, "#0000ff", class: "blue"
+                    = f.radio_button :bottoms_color, "#202020", class: "black"
+                    = f.radio_button :bottoms_color, "#808080", class: "gray"
+                    = f.radio_button :bottoms_color, "#ffffff", class: "white"
+                    .arrange-color
+                      調整
+                      = f.color_field :bottoms_color, id: "bottoms-color-field"
+                    = f.hidden_field :bottoms_color, id: "hidden-bottoms-color"
+                -# 靴
+                .shoes-tab.hidden-tab
+                  shoes
+                .select-parts
+                  .btn-wrapper
+                    = f.radio_button :shoes_color, "#fff100", class: "yellow"
+                    = f.radio_button :shoes_color, "#0000ff", class: "blue"
+                    = f.radio_button :shoes_color, "#202020", class: "black"
+                    = f.radio_button :shoes_color, "#ffffff", class: "white"
+                    .arrange-color
+                      調整
+                      = f.color_field :shoes_color, id: "shoes-color-field"
+                    = f.hidden_field :shoes_color, id: "hidden-shoes-color"
 
     .user-post
       .actions
