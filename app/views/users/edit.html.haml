@@ -62,10 +62,6 @@
         .avatar-field
           .form-announce
             スタイルとカラーが選べます
-            %br/
-            ランニングを続けると
-            %br/
-            新しい服が選べるようになります
           = f.fields_for :avatar, class: "avatar_form" do |f|
             .color-select
               .color-select__announce
@@ -218,6 +214,7 @@
                       調整
                       = f.color_field :shoes_color, id: "shoes-color-field"
                     = f.hidden_field :shoes_color, id: "hidden-shoes-color"
+              .responsive-select-parts
               = f.hidden_field :weekly_average_mileage
     .user-post
       .actions

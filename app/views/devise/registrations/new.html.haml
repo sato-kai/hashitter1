@@ -75,10 +75,10 @@
         .avatar-field
           .form-announce
             スタイルとカラーが選べます
-            %br/
-            ランニングを続けると
-            %br/
-            新しい服が選べるようになります
+            .form-announce__advice
+              ランニングを続けると
+              %br/
+              新しい服が選べます
           = f.fields_for :avatar, class: "avatar_form" do |f|
             .color-select
               .color-select__announce
@@ -165,7 +165,7 @@
                       調整
                       = f.color_field :shoes_color, id: "shoes-color-field"
                     = f.hidden_field :shoes_color, id: "hidden-shoes-color"
-
+              .responsive-select-parts
     .user-post
       .actions
         = f.submit "新規登録", class: "submit-button"

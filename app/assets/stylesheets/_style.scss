@@ -25,12 +25,8 @@ $sp: 480px;  // スマホ
   @include tab {
     width: 100%;
   };
-  @include sp {
-  };
 }
 .side-bar{
-  @include pc {
-  };
   @include tab {
     display: none;
   };
@@ -38,15 +34,67 @@ $sp: 480px;  // スマホ
     display: none;
   };
 }
+.header{
+  @include sp {
+    position: relative;
+  };
+  &__right{
+    .responsive-menu{
+      @include pc {
+        display: none;
+      }
+      @include tab {
+        display: none;
+      }
+      @include sp {
+        font-size: 40px;
+      }
+    }
+    &__menu{
+      @include sp {
+        position: absolute;
+        top: -200px;
+        right: 30px;
+        flex-direction: column;
+      };
+      .responsive-mypage{
+        @include pc {
+          display: none;
+        }
+        @include tab {
+          display: none;
+        }
+      }
+      .list{
+        @include pc {
+          border-radius: 20px;
+        }
+        @include tab {
+          border-radius: 20px;
+        }
+        @include sp {
+          border-radius: 0%;
+          margin: 0;
+        }
+      }
+    }
+    .avatar-circle{
+      @include sp {
+        display: none;
+      };
+    }
+  }
+}
 
-
+.active-menu{
+  top: 80px;
+}
 .circle{
   @include pc {
     display: none;
   };
-  @include tab {
-  };
   @include sp {
+    display: none;
   };
 }
 
@@ -54,25 +102,15 @@ $sp: 480px;  // スマホ
   @include pc {
     display: none;
   };
-  @include tab {
-  };
-  @include sp {
-  };
 }
 
 .avatar-responsive{
   @include pc {
     display: none;
   };
-  @include tab {
-  };
-  @include sp {
-  };
 }
 
 .user-content{
-  @include pc {
-  };
   @include tab {
     flex-direction: column;
   };
@@ -82,6 +120,9 @@ $sp: 480px;  // スマホ
 }
 
 .field-wrapper{
+  @include sp {
+    flex-direction: column;
+  };
   .user-field{
     @include pc {
       width: 33%;
@@ -90,7 +131,7 @@ $sp: 480px;  // スマホ
       width: 50%;
     };
     @include sp {
-      // width: 50%;
+      width: 100%;
     };
   }
   .avatar-image{
@@ -101,19 +142,15 @@ $sp: 480px;  // スマホ
       width: 50%;
     };
     @include sp {
-      // width: 50%;
+      width: 100%;
     };
   }
   .avatar-form{
     @include pc {
       width: 33%;
     };
-    @include tab {
-      
-    };
     @include sp {
-      display: none;
-      width: 50%;
+      position: relative;
     };
     .avatar-field{
       @include pc {
@@ -133,7 +170,104 @@ $sp: 480px;  // スマホ
         z-index: 1000;
       };
       @include sp {
+        display: block;
+        background-color: #ffffff;
+        border: solid 5px #ad9570;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.5) -5px 5px 5px;
+        margin: 0 auto 10px;
+        z-index: 1000;
+        position: relative;
+        right: 0;
       };
+      .form-announce{
+        @include sp {
+          position: absolute;
+          top: -100px;
+          left: -35px;
+          width: 170px;
+          height: 60px;
+          padding: 5px;
+          border-radius: 50px;
+          background-color: #ffffff;
+        };
+        &__advice{
+          @include sp {
+            position: absolute;
+            top: -100px;
+            left: -10px;
+            width: 175px;
+            height: 60px;
+            padding: 5px;
+            border: solid 2px #ad9570;
+            border-radius: 50px;
+            background-color: #ffffff;
+            }
+        }
+      }
+      .color-select{
+        @include pc {
+          margin: 20% auto;
+        };
+        @include sp {
+          margin: 0 auto;
+          width: auto;
+        };
+        &__announce{
+          @include sp {
+            position: absolute;
+            top: -80px;
+            right: -35px;
+            width: 170px;
+            height: 60px;
+            border: solid 2px #ad9570;
+            border-radius: 50px;
+            background-color: #ffffff;
+            padding: 5px;
+          };
+        }
+        .radio-buttons{
+          @include sp {
+            display: flex;
+            justify-content: space-around;
+            position: relative;
+            padding: 0px;
+          };
+          .hidden-tab{
+            @include sp {
+              width: auto;
+              height: 30px;
+              line-height: 30px;
+              margin: 5px;
+            };
+          }
+          .select-parts{
+            @include sp {
+              width: 90%;
+              position: absolute;
+              bottom: -140px;
+              padding: 0;
+            };
+            .btn-wrapper{
+              @include sp{
+                padding: 0;
+              }
+            }
+          }
+        }
+        .responsive-select-parts{
+          @include pc {
+            display: none;
+          };
+          @include tab {
+            display: none;
+          };
+          @include sp {
+            height: 150px;
+            width: 100%;
+          };
+        }
+      }
     }
   }
 }

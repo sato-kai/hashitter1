@@ -13,8 +13,10 @@
       .header__left
         = link_to "Hashitter", root_path, class: "home-link"
       .header__right
+        = icon "fas", "bars", class: "responsive-menu"
         - if user_signed_in?
-          %ul.header__right__menu
+          .header__right__menu
+            = link_to "マイページ", user_path(current_user), class: "list responsive-mypage"
             = link_to "WORK", user_works_path(current_user), class: "list"
             = link_to "TWEET", new_tweet_path, remote: true, class: "list"
             = link_to "ログアウト", destroy_user_session_path, class: "list js-modal-logout"

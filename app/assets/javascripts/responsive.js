@@ -24,4 +24,12 @@ $(document).on("turbolinks:load",function(){
     $(this).fadeOut();
     $('.dress-up').fadeIn();
   })
+  $('.responsive-menu').on('click', function(){
+    $(this).toggleClass('active-menu');
+    if ($(this).hasClass('active-menu')){
+      $('.header__right__menu').addClass('active-menu');
+    } else {
+      $('.header__right__menu').removeClass('active-menu');
+    }
+  })
 });
