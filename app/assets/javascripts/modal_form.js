@@ -27,16 +27,19 @@ $(document).on("turbolinks:load",function(){
   });
   // tweet削除
   $('.js-modal-destroy-tweet-open').on('click',function(){
-    destroyId = $(this).children("#tweet-delete-button").attr('href');
+    destroyId = $(this).parent().parent().parent().parent();
+    destroyUrl = $(this).children("#tweet-delete-button").attr('href');
     $('.js-modal-destroy-tweet').fadeIn();
     return false;
   });
   $('.modal-submit').on('click', '#delete-button', function(){
     $.ajax({
-      url: destroyId,
+      url: destroyUrl,
       type: 'POST',
       data: {"_method": "DELETE"} ,
     })
+    $(destroyId).remove();
+    $('.js-modal-destroy-tweet').fadeOut();
   });
   // comment新規投稿
   $('.js-modal-comment-open').on('click',function(){

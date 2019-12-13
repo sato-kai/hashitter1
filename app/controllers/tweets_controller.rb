@@ -48,11 +48,11 @@ class TweetsController < ApplicationController
   def destroy
     if @tweet.user_id == current_user.id
       @tweet.destroy
-      redirect_to root_path
-      flash[:notice] = "tweetを削除しました"
-    else
-      redirect_to root_path
-      flash[:notice] = "tweetを削除できませんでした"
+    #   redirect_to root_path
+    #   flash[:notice] = "tweetを削除しました"
+    # else
+    #   redirect_to root_path
+    #   flash[:notice] = "tweetを削除できませんでした"
     end
   end
 
