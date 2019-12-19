@@ -272,3 +272,17 @@ $sp: 480px;  // スマホ
   }
 }
 
+.image{
+  @include pc {
+    width: 300px;
+    height: 300px;
+  };
+  @include tab {
+    width: 250px;
+    height: 250px;
+  };
+  @include sp {
+    width: 150px;
+    height: 150px;
+  };
+}
