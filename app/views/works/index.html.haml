@@ -20,7 +20,13 @@
             km
         %tr.user-box__line
           %td.inline
-            今週の平均
+            今週の総走行距離
+          %td.inline
+            = @weekly_total
+            km
+        %tr.user-box__line
+          %td.inline
+            1日の平均(1週間辺り)
           %td.inline
             = @weekly_average
             km
@@ -76,7 +82,7 @@
             = f.hidden_field :run, value: @work.run, id: "hidden-work"
           .lower-form
             .actions
-              = f.submit "入力する", class: "submit-button", id: "work-submit"
+              = f.submit "保存", class: "submit-button", id: "work-submit"
 
 -# サイドバー
 .side-bar
