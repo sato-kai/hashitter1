@@ -40,6 +40,10 @@ $(document).on("turbolinks:load",function(){
     })
     $(destroyId).remove();
     $('.js-modal-destroy-tweet').fadeOut();
+    var path = location.pathname;
+    if (path.match(/tweets/)){
+      window.location.pathname = "/";
+    };
   });
   // comment新規投稿
   $('.js-modal-comment-open').on('click',function(){
